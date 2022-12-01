@@ -1,10 +1,14 @@
 import React from 'react';
 import Example from '../Components/ExampleComponent/Example'
 
-const Example = () =>{
+const ExampleComponent = () =>{
     return(
-        <Example/>
+        <div>
+            <h1>Example Page</h1>
+            <Example/>
+        </div>
+        
     )
 }
 
-export default Example
+export default ExampleComponent
