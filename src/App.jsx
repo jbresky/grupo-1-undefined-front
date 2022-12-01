@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link ,BrowserRouter as Router} from 'react-router-dom'
 import reactLogo from './assets/react.svg'
 import './App.css'
 import ExampleContainer from './Components/ExampleComponent/ExampleContainer'
@@ -8,7 +9,9 @@ function App() {
 
   return (
     <div className="App">
-      <div>
+    <Router>
+    <div>
+      <Link to='#'/>
         <a href="https://vitejs.dev" target="_blank">
           <img src="/vite.svg" className="logo" alt="Vite logo" />
         </a>
@@ -29,6 +32,8 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+    </Router>
+      
 
     </div>
   )
