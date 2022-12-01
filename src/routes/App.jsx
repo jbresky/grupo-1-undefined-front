@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter,Routes, Route } from 'react-router-dom';
-import Example from '../src/pages/Example';
+import Example from '../pages/Example';
 
 const App = () =>{
     return(
