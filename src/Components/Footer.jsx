@@ -1,7 +1,8 @@
-import { Box, Flex, Heading, HStack, Stack, Text } from "@chakra-ui/react"
+import { Box, Flex, Heading, HStack, Link, Stack, Text } from "@chakra-ui/react"
 import { AiOutlineInstagram } from 'react-icons/ai';
 import { BsTwitter } from 'react-icons/bs';
 import { FaFacebookSquare } from 'react-icons/fa';
+import { AiFillGithub } from 'react-icons/ai';
 
 
 export default function Footer() {
@@ -26,6 +27,9 @@ export default function Footer() {
                             <AiOutlineInstagram />
                             <BsTwitter />
                             <FaFacebookSquare />
+                            <Link href="https://github.com/jbresky/grupo-1-undefined-front">
+                                <AiFillGithub />
+                            </Link>
                         </HStack>
                     </Box>
                 </Flex>
