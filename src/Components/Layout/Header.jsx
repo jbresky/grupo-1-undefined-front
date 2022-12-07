@@ -1,6 +1,6 @@
 import React from 'react'
 import {Flex, Heading } from '@chakra-ui/react';
-import HeaderDrawer from './Drawers/HeaderDrawer';
+import HeaderDrawer from '../Drawers/HeaderDrawer';
 
 const Header = () => {
     return (
