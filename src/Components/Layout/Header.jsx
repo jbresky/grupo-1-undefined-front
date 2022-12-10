@@ -4,8 +4,8 @@ import HeaderDrawer from '../Drawers/HeaderDrawer';
 
 const Header = () => {
     return (
-        <Flex justify={'space-around'} p={4} mt={5} mb={5}>
-            <Heading>AlkyBank</Heading>
+        <Flex background={'#2d3748'} justify={'space-between'} p={8}>
+            <Heading color={'gray.100'}>AlkyBank</Heading>
             <HeaderDrawer />
         </Flex>
     )
