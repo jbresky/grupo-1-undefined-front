@@ -4,6 +4,7 @@ import { ChakraProvider } from '@chakra-ui/react';
 import Home from '../pages/Home.jsx';
 import Login from '../pages/Login.jsx';
 import '../App.css'
+import CreateTransaction from '../pages/CreateTransaction.jsx';
 
 const App = () => {
     return (
@@ -12,6 +13,7 @@ const App = () => {
                 <Routes>
                     <Route exact path='/' element={<Home/>} />
                     <Route exact path='/login' element={<Login/>} />
+                    <Route exact path='/transaction/create' element={<CreateTransaction/>} />
                     <Route exact path='*' element="NOT FOUND" />
                 </Routes>
             </BrowserRouter>
