@@ -9,9 +9,11 @@ import {
     Button,
     IconButton,
     Input,
-    useDisclosure
+    useDisclosure,
+    Link
 } from '@chakra-ui/react'
 import { useRef } from 'react'
+import { Link as RouterLink } from 'react-router-dom'
 import { GiHamburgerMenu } from 'react-icons/gi'
 
 export default function HeaderDrawer() {
@@ -24,6 +26,7 @@ export default function HeaderDrawer() {
                 Open
             </Button> */}
             <IconButton
+                background={'gray.100'}
                 ref={btnRef}
                 onClick={onOpen}
                 icon={<GiHamburgerMenu />}
@@ -35,12 +38,18 @@ export default function HeaderDrawer() {
                 finalFocusRef={btnRef}
                 w={'300px'}
             >
-                <DrawerOverlay />
-                <DrawerContent>
+                <DrawerOverlay
+                />
+                <DrawerContent
+                background={'#2d3748'}
+                color={'gray.100'}
+                >
                     <DrawerCloseButton w={'40px'} />
-                    <DrawerHeader>Menu</DrawerHeader>
+                    <DrawerHeader
+                    >Menu</DrawerHeader>
 
                     <DrawerBody>
+                        <Link fontSize={'20px'} as={RouterLink} to='/profile'>Mi perfil</Link>
                         <p>Links...</p>
                         <p>Links...</p>
                         <p>Links...</p>
@@ -50,7 +59,7 @@ export default function HeaderDrawer() {
                         <Button variant='outline' mr={3} onClick={onClose}>
                             Cancel
                         </Button>
-                        <Button colorScheme='blue'>Save</Button>
+                        <Button colorScheme='teal'>Save</Button>
                     </DrawerFooter>
                 </DrawerContent>
             </Drawer>
