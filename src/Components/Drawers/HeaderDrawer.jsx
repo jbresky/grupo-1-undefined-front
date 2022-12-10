@@ -10,7 +10,8 @@ import {
     IconButton,
     Input,
     useDisclosure,
-    Link
+    Link,
+    Stack
 } from '@chakra-ui/react'
 import { useRef } from 'react'
 import { Link as RouterLink } from 'react-router-dom'
@@ -41,18 +42,20 @@ export default function HeaderDrawer() {
                 <DrawerOverlay
                 />
                 <DrawerContent
-                background={'#2d3748'}
-                color={'gray.100'}
+                    background={'#2d3748'}
+                    color={'gray.100'}
                 >
                     <DrawerCloseButton pt={4} w={'40px'} />
                     <DrawerHeader
                     >Menu</DrawerHeader>
 
                     <DrawerBody>
-                        <Link fontSize={'20px'} as={RouterLink} to='/profile'>Mi perfil</Link>
-                        <p>Links...</p>
-                        <p>Links...</p>
-                        <p>Links...</p>
+                        <Stack spacing={5}>
+                            <Link as={RouterLink} to='/profile'>Mi perfil</Link>
+                            <Link as={RouterLink} to='/'>Enviar dinero</Link>
+                            <Link as={RouterLink} to='/'>Movimientos</Link>
+                            <Link as={RouterLink} to='/'>Gastos</Link>
+                        </Stack>
                     </DrawerBody>
 
                     <DrawerFooter>
