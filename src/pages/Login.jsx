@@ -4,10 +4,6 @@ import { useDispatch } from "react-redux";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
 import {
-  Flex,
-  Heading,
-  Input,
-  Button,
   useColorModeValue,
   useToast,
   Alert,
@@ -16,6 +12,7 @@ import {
 import Header from "../Components/Layout/Header";
 import Footer from "../Components/Layout/Footer";
 import { login } from "../stateManagement/userReducer";
+import { LoginForm } from "../Components/LoginForm";
 
 function Login() {
   const dispatch = useDispatch();
@@ -52,7 +49,7 @@ function Login() {
                 status: "success",
                 duration: 9000,
                 isClosable: true,
-                render: (props) => (
+                render: () => (
                   <Alert status="success">
                     <AlertIcon />
                     User logged successfully.
@@ -89,49 +86,15 @@ function Login() {
           handleBlur,
           handleSubmit,
         }) => (
-          <form noValidate onSubmit={handleSubmit}>
-            <Flex h="50vh" alignItems="center" justifyContent="center">
-              <Flex
-                flexDirection="column"
-                bg={formBackground}
-                p={12}
-                borderRadius={8}
-                boxShadow="lg"
-              >
-                <Heading mb={6}>Log In</Heading>
-                <Input
-                  type="email"
-                  name="email"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.email}
-                  placeholder="Enter email id / username"
-                  className="form-control inp_text"
-                  id="email"
-                />
-                {/* If validation is not passed show errors */}
-                <p className="error">
-                  {errors.email && touched.email && errors.email}
-                </p>
-                <Input
-                  type="password"
-                  name="password"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.password}
-                  placeholder="Enter password"
-                  className="form-control"
-                />
-                {/* If validation is not passed show errors */}
-                <p className="error">
-                  {errors.password && touched.password && errors.password}
-                </p>
-                <Button colorScheme="teal" mb={8} type="submit">
-                  Log In
-                </Button>
-              </Flex>
-            </Flex>
-          </form>
+          <LoginForm
+            formBackground={formBackground}
+            handleSubmit={handleSubmit}
+            handleChange={handleChange}
+            errors={errors}
+            handleBlur={handleBlur}
+            touched={touched}
+            values={values}
+          />
         )}
       </Formik>
       <footer>
