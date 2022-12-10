@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '../Components/Layout/Header';
 import Footer from '../Components/Layout/Footer';
+import Spacing from '../Components/Spacing';
 
 function Home() {
     return (
@@ -8,9 +9,11 @@ function Home() {
             <header>
                 <Header/>
             </header>
-            <footer>
+            {/* <Spacing/> */}
+            {/* <footer>
                 <Footer/>
-            </footer>
+                <Spacing bg={'gray.100'}/>
+            </footer> */}
         </div>
       );
 }
