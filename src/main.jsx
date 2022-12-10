@@ -3,9 +3,7 @@ import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
 import dotenv from 'dotenv';
 import axios from 'axios';
-
 import App from "../src/routes/App";
-import "./index.css";
 import store from './stateManagement/reduxStore.js';
 
 axios.defaults.baseURL = import.meta.BACKEND_URL || "http://localhost:3000";
