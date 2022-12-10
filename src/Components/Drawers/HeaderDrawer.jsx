@@ -44,7 +44,7 @@ export default function HeaderDrawer() {
                 background={'#2d3748'}
                 color={'gray.100'}
                 >
-                    <DrawerCloseButton w={'40px'} />
+                    <DrawerCloseButton pt={4} w={'40px'} />
                     <DrawerHeader
                     >Menu</DrawerHeader>
 
