@@ -5,6 +5,7 @@ import Login from '../pages/Login';
 import CreateTransaction from '../pages/CreateTransaction';
 import Home from '../pages/Home';
 import Profile from '../pages/Profile';
+import Transactions from '../pages/Transactions';
 
 const App = () => {
     return (
@@ -14,7 +15,8 @@ const App = () => {
                     <Route exact path='/' element={<Home/>} />
                     <Route exact path='/profile' element={<Profile/>} />
                     <Route exact path='/login' element={<Login/>} />
-                    <Route exact path='/transaction/create' element={<CreateTransaction/>} />
+                    <Route exact path='/transactions/create' element={<CreateTransaction />} />
+                    <Route exact path='/transactions/' element={<Transactions/>} />
                     <Route exact path='*' element="NOT FOUND" />
                 </Routes>
             </BrowserRouter>
