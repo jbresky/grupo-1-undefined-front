@@ -1,4 +1,4 @@
-import { Flex, Heading, Input, Button, Select } from "@chakra-ui/react";
+import { Flex, Heading, Input, Button, Select, Text } from "@chakra-ui/react";
 
 export const TransactionsForm = ({
   handleSubmit,
@@ -9,10 +9,11 @@ export const TransactionsForm = ({
   touched,
   handleChange,
   categories,
+  users
 }) => {
   return (
     <form noValidate onSubmit={handleSubmit}>
-      <Flex h="50vh" alignItems="center" justifyContent="center">
+      <Flex h="100vh" alignItems="center" justifyContent="center">
         <Flex
           flexDirection="column"
           bg={formBackground}
@@ -32,10 +33,9 @@ export const TransactionsForm = ({
             className="form-control inp_text"
             id="description"
           />
-          {/* If validation is not passed show errors */}
-          <p className="error">
+          <Text color='red.400' fontSize='12px' style={{paddingLeft: 15}}>
             {errors.description && touched.description && errors.description}
-          </p>
+          </Text>
           <Input
             type="number"
             name="amount"
@@ -45,19 +45,25 @@ export const TransactionsForm = ({
             placeholder="Enter amount"
             className="form-control"
           />
-          {/* If validation is not passed show errors */}
-          <p className="error">
+          <Text color='red.400' fontSize='12px' style={{paddingLeft: 15}}>
             {errors.amount && touched.amount && errors.amount}
-          </p>
+          </Text>
           <Select name="categoryId" placeholder="Select Category" onChange={handleChange}>
             {categories.map((category) => {
               return <option key={category.id} value={category.id}>{category.name}</option>;
             })}
           </Select>
-          {/* If validation is not passed show errors */}
-          <p className="error">
+          <Text color='red.400' fontSize='12px' style={{paddingLeft: 15}}>
             {errors.categoryId && touched.categoryId && errors.categoryId}
-          </p>
+          </Text>
+          <Select name="userId" placeholder="Select User" onChange={handleChange}>
+            {users.map((user) => {
+              return <option key={user.id} value={user.id}>{`${user.firstName} ${user.lastName}`}</option>;
+            })}
+          </Select>
+          <Text color='red.400' fontSize='12px' style={{paddingLeft: 15}}>
+            {errors.userid && touched.userid && errors.userid}
+          </Text>
           <Input
             type="date"
             name="date"
@@ -67,10 +73,9 @@ export const TransactionsForm = ({
             placeholder="Enter date"
             className="form-control"
           />
-          {/* If validation is not passed show errors */}
-          <p className="error">
+          <Text color='red.400' fontSize='12px' style={{paddingLeft: 15}}>
             {errors.date && touched.date && errors.date}
-          </p>
+          </Text>
           <Button colorScheme="teal" mb={8} type="submit">
             Create
           </Button>

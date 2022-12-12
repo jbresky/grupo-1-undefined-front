@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import { useNavigate } from "react-router-dom";
 import {
   useColorModeValue,
   useToast,
@@ -15,16 +14,18 @@ import { TransactionsForm } from "../Components/TransactionsForm";
 
 function CreateTransaction(initialValues) {
   const toast = useToast();
-  const navigate = useNavigate();
   const [categories, setCategories] = useState([]);
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    const fetchCategories = async () => {
+    const fetchCategoriesAndUsers = async () => {
       const categories = await axios.get("/categories");
+      const users = await axios.get("/users");
       setCategories(categories.data?.body ?? []);
+      setUsers(users.data?.body ?? []);
     };
 
-    fetchCategories();
+    fetchCategoriesAndUsers();
   }, []);
 
   const schema = Yup.object().shape({
@@ -37,6 +38,7 @@ function CreateTransaction(initialValues) {
         (value) => value > 0
       ),
     categoryId: Yup.number().required(),
+    userId: Yup.number().required(),
     date: Yup.date().required(),
   });
 
@@ -44,7 +46,7 @@ function CreateTransaction(initialValues) {
 
   const onSubmit = async (values) => {
     const response = await axios.post("/transactions", {...values, userId: 1});
-    if (response.payload?.body?.id) {
+    if (response.data?.body?.id) {
       toast({
         title: "Create transaction.",
         description: "Transaction created successfully.",
@@ -59,17 +61,15 @@ function CreateTransaction(initialValues) {
         ),
         position: "top",
       });
-
-      navigate("/");
     }
-    if (response.code !== 200) {
+    if (response.data?.code !== 200) {
       toast({
         title: "Error",
         status: "error",
         render: () => (
           <Alert status="error">
             <AlertIcon />
-            {response.payload.message}
+            {response.message}
           </Alert>
         ),
         duration: 9000,
@@ -90,8 +90,9 @@ function CreateTransaction(initialValues) {
           initialValues || {
             description: "",
             amount: 0,
-            categoryId: 0,
+            categoryId: -1,
             date: "",
+            userId: -1,
           }
         }
         onSubmit={(values) => {
@@ -115,6 +116,7 @@ function CreateTransaction(initialValues) {
             touched={touched}
             values={values}
             categories={categories}
+            users={users}
           />
         )}
       </Formik>
