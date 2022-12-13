@@ -1,9 +1,8 @@
 import { Box, Heading, Card, CardHeader, CardBody, Stack, Text, StackDivider, Flex, Link } from '@chakra-ui/react'
 import React from 'react'
-import Spacing from '../Components/Spacing'
 import { BiChevronLeft } from 'react-icons/bi'
 import { Link as RouterLink } from 'react-router-dom'
-import Header from '../Components/Layout/Header'
+import Header from '../../Components/Layout/Header'
 
 export default function Profile() {
     return (
@@ -13,7 +12,7 @@ export default function Profile() {
                
                 <CardHeader w={['95%', '80%', '80%', '60%']} margin={'auto'}>
                 <Box w={'40px'} pb={4}>
-                    <Link as={RouterLink} to="/">
+                    <Link as={RouterLink} to={'/'}>
                         <BiChevronLeft fontSize={25}/>
                     </Link>
                 </Box>
