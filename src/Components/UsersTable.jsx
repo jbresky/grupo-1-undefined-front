@@ -13,7 +13,7 @@ const UsersTable = ({ users }) => {
         <TableContainer whiteSpace={'nowrap'} p={4}>
             <Table size={'md'} variant='striped'>
                 <Thead>
-                    <Tr borderTop={'1px'}>
+                    <Tr>
                         <Th>ID</Th>
                         <Th>Apellido</Th>
                         <Th>Nombre</Th>
