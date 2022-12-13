@@ -12,7 +12,11 @@ const Header = () => {
         justify={['space-between', 'space-between', 'space-around']} 
         p={6}
         >
-            <Heading color={'gray.100'}>AlkyBank</Heading>
+            <Heading color={'gray.100'}>
+                <Link textDecoration={'none'} as={RouterLink} to='/'>
+                AlkyBank
+                </Link>
+                </Heading>
             <Box display={['block', 'block', 'none']}>
                 <HeaderDrawer />
             </Box>
