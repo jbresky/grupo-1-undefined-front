@@ -3,6 +3,7 @@ import React from 'react'
 import { BiChevronLeft } from 'react-icons/bi'
 import { Link as RouterLink } from 'react-router-dom'
 import Header from '../../Components/Layout/Header'
+import EditButton from '../Components/EditProfile/EditButton'
 
 export default function Profile() {
     return (
@@ -18,7 +19,7 @@ export default function Profile() {
                 </Box>
                     <Flex justify={'space-between'}>
                         <Heading size={['sm', 'md', 'md', 'lg']}>Personal details</Heading>
-                        <Text fontSize={['sm', 'md', 'md', 'lg']} textDecoration={'underline'}>Edit</Text>
+                        <Text fontSize={['sm', 'md', 'md', 'lg']} textDecoration={'underline'}><EditButton/></Text>
                     </Flex>
                 </CardHeader>
 
