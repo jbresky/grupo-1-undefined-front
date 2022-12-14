@@ -23,9 +23,11 @@ const Header = () => {
                 <HStack display={['none', 'none', 'block']}fontSize={'19px'} color={'gray.100'} spacing={12}>
                     {/* Se podría crear un componente para los links ya que se está repitiendo en el drawer */}
                     <Link as={RouterLink} to='/profile'>Mi perfil</Link>
-                    <Link as={RouterLink} to='/'>Enviar dinero</Link>
-                    <Link as={RouterLink} to='/'>Movimientos</Link>
-                    <Link as={RouterLink} to='/'>Gastos</Link>
+                <Link as={RouterLink} to='/transactions/create'>Enviar dinero</Link>
+                <Link as={RouterLink} to='/transactions'>Movimientos</Link>
+                <Link as={RouterLink} to='/login'>Log In</Link>
+                <Link as={RouterLink} to='/register'>Register</Link>
+
                 </HStack>
         </Flex>
     )

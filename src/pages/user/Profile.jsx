@@ -3,7 +3,7 @@ import React from 'react'
 import { BiChevronLeft } from 'react-icons/bi'
 import { Link as RouterLink } from 'react-router-dom'
 import Header from '../../Components/Layout/Header'
-import EditButton from '../Components/EditProfile/EditButton'
+import EditButton from '../../Components/EditProfile/EditButton'
 
 export default function Profile() {
     return (
