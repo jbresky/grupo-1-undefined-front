@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 import dotenv from 'dotenv';
 import axios from 'axios';
 import App from "../src/routes/App";
-import store from './stateManagement/reduxStore.js';
+import store from "./app/store";
 
 axios.defaults.baseURL = import.meta.BACKEND_URL || "http://localhost:3000";
 
