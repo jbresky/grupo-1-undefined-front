@@ -1,4 +1,4 @@
-import { Flex, Heading, Input, Button } from "@chakra-ui/react";
+import { Flex, Heading, Input, Button, FormControl, FormErrorMessage, FormLabel } from "@chakra-ui/react";
 
 export const LoginForm = ({
   handleSubmit,
@@ -8,46 +8,52 @@ export const LoginForm = ({
   errors,
   touched,
   handleChange,
+  loading
 }) => (
   <form noValidate onSubmit={handleSubmit}>
-    <Flex h="50vh" alignItems="center" justifyContent="center">
+    <Flex m={'100px'} align="center" justify="center">
       <Flex
         flexDirection="column"
         bg={formBackground}
         p={12}
-        borderRadius={8}
-        boxShadow="lg"
+        borderRadius={5}
+        boxShadow="md"
+        w={'400px'}
       >
-        <Heading mb={6}>Log In</Heading>
-        <Input
-          type="email"
-          name="email"
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values.email}
-          placeholder="Enter email id / username"
-          className="form-control inp_text"
-          id="email"
-        />
-        {/* If validation is not passed show errors */}
-        <p className="error">{errors.email && touched.email && errors.email}</p>
-        <Input
-          type="password"
-          name="password"
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values.password}
-          placeholder="Enter password"
-          className="form-control"
-        />
-        {/* If validation is not passed show errors */}
-        <p className="error">
-          {errors.password && touched.password && errors.password}
-        </p>
-        <Button colorScheme="teal" mb={8} type="submit">
+        <Heading mb={6}>Sign In</Heading>
+        <FormControl pb={4} isInvalid={!!errors.email && touched.email}>
+          <FormLabel htmlFor="email">Email</FormLabel>
+          <Input
+          background='gray.300'
+            type="email"
+            name="email"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.email}
+            className="form-control inp_text"
+            id="email"
+          />
+          <FormErrorMessage>{errors.email}</FormErrorMessage>
+        </FormControl>
+        <FormControl pb={4} isInvalid={!!errors.password && touched.password}>
+          <FormLabel htmlFor="password">Password</FormLabel>
+          <Input
+          background='gray.300'
+            type="password"
+            name="password"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.password}
+            className="form-control"
+          />
+          <FormErrorMessage>{errors.password}</FormErrorMessage>
+        </FormControl>
+
+        <Button mt={4} disabled={loading} color={'white'} background="gray.700" mb={8} type="submit">
           Log In
         </Button>
       </Flex>
     </Flex>
   </form>
 );
+
