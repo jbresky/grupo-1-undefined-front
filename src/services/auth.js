@@ -3,11 +3,12 @@ import { postRequest } from "./http-request";
 
 const login = async (email, password) => {
     try {
-        const { body } = await postRequest('/auth/login', { email, password })
+        const response = await postRequest('/auth/login', { email, password })
 
-        localStorage.write('alkybank', body)
+        localStorage.write('alkybank', response.body)
+        
+        return response
 
-        return body
     } catch (error) {
         throw new Error(error)
     }
