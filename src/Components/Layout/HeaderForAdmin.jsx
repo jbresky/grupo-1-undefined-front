@@ -1,10 +1,10 @@
 import React from 'react'
-import { Flex, Heading, Box, HStack } from '@chakra-ui/react';
+import { Flex, Heading, Box, HStack, Text } from '@chakra-ui/react';
 import HeaderDrawer from '../Drawers/HeaderDrawer';
 import { Link as RouterLink } from 'react-router-dom';
 import { Link } from '@chakra-ui/react';
 
-const Header = () => {
+const HeaderForAdmin = ({admin}) => {
     return (
         <Flex
         alignItems={'center'}
@@ -22,13 +22,11 @@ const Header = () => {
             </Box>
                 <HStack display={['none', 'none', 'block']}fontSize={'19px'} color={'gray.100'} spacing={12}>
                     {/* Se podría crear un componente para los links ya que se está repitiendo en el drawer */}
-                    <Link as={RouterLink} to='/transactions/create'>Enviar dinero</Link>
-                <Link as={RouterLink} to='/transactions'>Movimientos</Link>
-                <Link as={RouterLink} to='/login'>Log In</Link>
-                <Link as={RouterLink} to='/register'>Register</Link>
+                    <Text>{admin}</Text>
+                    <Link as={RouterLink} to='/profile'>Categorias</Link>
                 </HStack>
         </Flex>
     )
 }
 
-export default Header
+export default HeaderForAdmin
