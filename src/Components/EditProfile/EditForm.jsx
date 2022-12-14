@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { updateProfile } from "../../app/authSlice";
+import { updateProfile } from "../../app/features/authSlice";
 import { useUpdateUser } from "../../hooks/useUsers";
 import { Formik } from "formik";
 import Edit from "./Edit";
