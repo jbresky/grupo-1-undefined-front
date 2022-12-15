@@ -32,3 +32,8 @@ export const registerSchema = Yup.object({
       'La contraseñade tener un mínimo 8 caracteres, e incluir al menos una letra en mayúscula y un caracter especial'
     ),
 })
+
+export const categorySchema = Yup.object({
+    name: Yup.string().required('Required'),
+    description: Yup.string(),
+})
