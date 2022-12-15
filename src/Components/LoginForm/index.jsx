@@ -11,7 +11,7 @@ export const LoginForm = ({
   loading
 }) => (
   <form noValidate onSubmit={handleSubmit}>
-    <Flex m={'100px'} align="center" justify="center">
+    <Flex m={'75px'} align="center" justify="center">
       <Flex
         flexDirection="column"
         bg={formBackground}
@@ -49,7 +49,7 @@ export const LoginForm = ({
           <FormErrorMessage>{errors.password}</FormErrorMessage>
         </FormControl>
 
-        <Button mt={4} disabled={loading} color={'white'} background="gray.700" mb={8} type="submit">
+        <Button mt={6} disabled={loading} color={'white'} background="gray.700" mb={4} type="submit">
           Log In
         </Button>
       </Flex>
