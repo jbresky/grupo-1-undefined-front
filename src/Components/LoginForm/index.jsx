@@ -1,4 +1,4 @@
-import { Flex, Heading, Input, Button, FormControl, FormErrorMessage, FormLabel } from "@chakra-ui/react";
+import { Flex, Heading, Input, Button, FormControl, FormErrorMessage, FormLabel,Text, Checkbox } from "@chakra-ui/react";
 
 export const LoginForm = ({
   handleSubmit,
@@ -11,20 +11,23 @@ export const LoginForm = ({
   loading
 }) => (
   <form noValidate onSubmit={handleSubmit}>
-    <Flex m={'75px'} align="center" justify="center">
+    <Flex mt={100} align="center" justify="center">
       <Flex
         flexDirection="column"
         bg={formBackground}
-        p={12}
+        p={'70px'}
         borderRadius={5}
         boxShadow="md"
-        w={'400px'}
+        w={'100%'}
       >
-        <Heading mb={6}>Sign In</Heading>
+        <Heading size={'lg'} mb={6}>Sign In</Heading>
         <FormControl pb={4} isInvalid={!!errors.email && touched.email}>
-          <FormLabel htmlFor="email">Email</FormLabel>
+          <FormLabel htmlFor="email">
+            Email
+            </FormLabel>
           <Input
-          background='gray.300'
+            background='gray.300'
+            border={'none'}
             type="email"
             name="email"
             onChange={handleChange}
@@ -38,7 +41,8 @@ export const LoginForm = ({
         <FormControl pb={4} isInvalid={!!errors.password && touched.password}>
           <FormLabel htmlFor="password">Password</FormLabel>
           <Input
-          background='gray.300'
+            border={'none'}
+            background='gray.300'
             type="password"
             name="password"
             onChange={handleChange}
@@ -48,8 +52,8 @@ export const LoginForm = ({
           />
           <FormErrorMessage>{errors.password}</FormErrorMessage>
         </FormControl>
-
-        <Button mt={6} disabled={loading} color={'white'} background="gray.700" mb={4} type="submit">
+        <Checkbox pt={3}><Text fontSize={'14px'}>Recordarme por una semana</Text></Checkbox>
+        <Button mt={6} h={12} disabled={loading} _hover={0} color={'white'} background="gray.700" mb={4} type="submit">
           Log In
         </Button>
       </Flex>

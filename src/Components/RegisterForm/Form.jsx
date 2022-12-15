@@ -1,5 +1,5 @@
 import React from "react";
-import { Stack, FormLabel, Button, Input, Flex, FormErrorMessage, FormControl, Heading } from "@chakra-ui/react";
+import { FormLabel, Button, Link, Box, Input, Text, Flex, FormErrorMessage, FormControl, Heading, Checkbox } from "@chakra-ui/react";
 
 const Form = ({
   formBackground,
@@ -17,15 +17,15 @@ const Form = ({
   return (
     <form onSubmit={handleSubmit}>
       <Flex mb={10} mt={10} align="center" justify="center">
-      <Flex
-        flexDirection="column"
-        bg={formBackground}
-        p={12}
-        borderRadius={5}
-        boxShadow="md"
-        w={'500px'}
-      >
-<Heading p={4} mb={4}>Register</Heading>
+        <Flex
+          flexDirection="column"
+          bg={formBackground}
+          p={12}
+          borderRadius={5}
+          boxShadow="md"
+          w={'500px'}
+        >
+          <Heading size={'lg'} pb={8}>Crea tu cuenta Alkybank</Heading>
           <FormControl pb={6} isInvalid={!!errors.firstName && touched.firstName}>
             <FormLabel htmlFor="firstName">Nombre</FormLabel>
             <Input
@@ -38,7 +38,7 @@ const Form = ({
               autoComplete="off"
               background='gray.300'
             />
-              <FormErrorMessage>{errors.firstName}</FormErrorMessage>
+            <FormErrorMessage>{errors.firstName}</FormErrorMessage>
           </FormControl>
 
           <FormControl pb={6} isInvalid={!!errors.lastName && touched.lastName}>
@@ -52,9 +52,9 @@ const Form = ({
               autoComplete="off"
               background='gray.300'
             />
-              <FormErrorMessage>
-                {errors.lastName}
-              </FormErrorMessage>
+            <FormErrorMessage>
+              {errors.lastName}
+            </FormErrorMessage>
           </FormControl>
 
           <FormControl pb={6} isInvalid={!!errors.email && touched.email}>
@@ -68,7 +68,7 @@ const Form = ({
               autoComplete="off"
               background='gray.300'
             />
-              <FormErrorMessage>{errors.email}</FormErrorMessage>
+            <FormErrorMessage>{errors.email}</FormErrorMessage>
           </FormControl>
 
           <FormControl pb={6} isInvalid={!!errors.password && touched.password}>
@@ -84,12 +84,17 @@ const Form = ({
             />
             <FormErrorMessage>{errors.password}</FormErrorMessage>
           </FormControl>
-
-          <Button disabled={loading} color={'white'} background="gray.700" type="submit">Submit</Button>
-        {/* </Stack>
-      </Container> */}
+          <Box pb={4} pt={2}>
+          <Checkbox>
+            <Text fontSize={'12px'} color={'#697386'}>Obtener emails de Alkybank sobre actualizacion de productos, noticias fintech y eventos. Podes darte de baja cuando quieras.
+            <br/>
+            <Link _hover={0} color={'#635bff'} href='#'>Politica de privacidad</Link>
+            </Text>
+          </Checkbox>
+          </Box>
+          <Button mt={4} disabled={loading} h={12} _hover={{color: 'black'}} color={'white'} background="gray.700" type="submit">Submit</Button>
+        </Flex>
       </Flex>
-    </Flex>
     </form>
   );
 };
