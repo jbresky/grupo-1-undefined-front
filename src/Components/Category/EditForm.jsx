@@ -9,7 +9,8 @@ const EditForm = ({
     handleSubmit,
     touched,
     errors,
-    categories
+    categories,
+    onclick
 }) => {
     const { name, description } =
         initialValues;
@@ -24,7 +25,7 @@ const EditForm = ({
                     borderRadius={5}
                     w={'500px'}
                 >
-                    <Heading size={'lg'} fontWeight={'bold'} mb={8}>Editar categoria</Heading>
+                    <Heading size={'md'} fontWeight={'bold'} mb={8}>Editar categoria</Heading>
                     <FormControl pb={4}>
                         <FormLabel htmlFor="name">Nombre</FormLabel>
                         <Select name="category" onChange={handleChange}>
@@ -60,7 +61,7 @@ const EditForm = ({
                         </FormErrorMessage>
                     </FormControl>
 
-                    <Button mt={4} _hover={0} color={'white'} background="blue.700" type="submit">Submit</Button>
+                    <Button mt={4} _hover={0} color={'white'} onClick={onclick} background="blue.700" type="submit">Submit</Button>
                 </Flex>
             </Flex>
         </form>
