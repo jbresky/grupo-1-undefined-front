@@ -3,7 +3,9 @@ import localStorage from "../../utils/localStorage";
 import auth from "../../services/auth";
 
 const initialState = () => {
-  if (!localStorage.read('alkybank')) {
+  const data = localStorage.read('alkybank')
+
+  if (!data) {
     return {
       logged: false,
       loading: false,
@@ -11,12 +13,11 @@ const initialState = () => {
       token: null
     }
   }
-  const data = localStorage.read('alkybank')
 
   return {
     logged: true,
     loading: false,
-    user: data.user,
+    user: data.userInfo,
     token: data.token
   }
 }
