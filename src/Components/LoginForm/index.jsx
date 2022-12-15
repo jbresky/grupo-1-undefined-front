@@ -11,23 +11,22 @@ export const LoginForm = ({
   loading
 }) => (
   <form noValidate onSubmit={handleSubmit}>
-    <Flex mt={100} align="center" justify="center">
+    <Flex mt={50} align="center" justify="center">
       <Flex
         flexDirection="column"
         bg={formBackground}
-        p={'70px'}
+        p={'50px'}
+        pb={'40px'}
         borderRadius={5}
-        boxShadow="md"
+        boxShadow='md'
         w={'100%'}
       >
-        <Heading size={'lg'} mb={6}>Sign In</Heading>
+        <Heading size={'md'} mb={6}>Sign In</Heading>
         <FormControl pb={4} isInvalid={!!errors.email && touched.email}>
-          <FormLabel htmlFor="email">
+          <FormLabel fontSize={14} htmlFor="email">
             Email
             </FormLabel>
           <Input
-            background='gray.300'
-            border={'none'}
             type="email"
             name="email"
             onChange={handleChange}
@@ -39,10 +38,8 @@ export const LoginForm = ({
           <FormErrorMessage>{errors.email}</FormErrorMessage>
         </FormControl>
         <FormControl pb={4} isInvalid={!!errors.password && touched.password}>
-          <FormLabel htmlFor="password">Password</FormLabel>
+          <FormLabel fontSize={14} htmlFor="password">Password</FormLabel>
           <Input
-            border={'none'}
-            background='gray.300'
             type="password"
             name="password"
             onChange={handleChange}
@@ -52,8 +49,8 @@ export const LoginForm = ({
           />
           <FormErrorMessage>{errors.password}</FormErrorMessage>
         </FormControl>
-        <Checkbox pt={3}><Text fontSize={'14px'}>Recordarme por una semana</Text></Checkbox>
-        <Button mt={6} h={12} disabled={loading} _hover={0} color={'white'} background="gray.700" mb={4} type="submit">
+        <Checkbox pt={1}><Text fontSize={'14px'}>Recordarme por una semana</Text></Checkbox>
+        <Button mt={8} h={12} disabled={loading} _hover={0} color={'white'} background="gray.700" mb={4} type="submit">
           Log In
         </Button>
       </Flex>

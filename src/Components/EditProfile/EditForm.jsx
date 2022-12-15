@@ -20,7 +20,7 @@ const EditForm = () => {
             <Formik initialValues={{
                 firstName: user.firstName,
                 lastName: user.lastName,
-                password: user.password,
+                password: '',
             }}
                 validationSchema={editSchema}
                 onSubmit={values => {
@@ -53,7 +53,6 @@ const EditForm = () => {
                         loading={false}
                     />
                 )}
-                {/* {user.firstName} */}
             </Formik>
         </div>
     );

@@ -26,49 +26,45 @@ const Header = () => {
             justify={['space-between', 'space-between', 'space-around']}
             p={6}
         >
-            <Heading color={'gray.100'}>
+            <Heading color={'gray.100'} size={'lg'}>
                 <Flex justify={'center'} gap={3}>
-                    <Link textDecoration={'none'} as={RouterLink} to='/'>
+                    <Link _hover={0} as={RouterLink} to='/'>
                         AlkyBank
                     </Link>
-                    {user && user.roleId === 1 ? (
-                        <Text>{'- ' + user.firstName } 😎</Text>
-                ) : null
-                }
-        </Flex>
+                    {user && user.roleId === 2 ? (
+                        <Text>{'- ' + user.firstName} 😎</Text>
+                    ) : null
+                    }
+                </Flex>
             </Heading >
             <Box display={['block', 'block', 'none']}>
                 <HeaderDrawer />
             </Box>
             <HStack display={['none', 'none', 'block']} fontSize={'19px'} color={'gray.100'} spacing={12}>
-            {
-                    user && user.roleId === 1 ? (
+                {
+                    user && user.roleId === 2 ? (
                         <>
-                        <AdminMenu/>
+                            <AdminMenu />
+                            <Button _hover={{ color: 'gray' }} color={'white'} backgroundColor={'transparent'} onClick={handleLogout}>Logout</Button>
                         </>
                     ) : null
                 }
-
-                {user && user.roleId === 2 ? (
+                {user && user.roleId === 1 ? (
                     <>
-                        <Link as={RouterLink} to='/transactions'>Movimientos</Link>
-                        <Link as={RouterLink} to='/transactions/create'>Enviar dinero</Link>
-                        <Link as={RouterLink} to='/profile'>Perfil</Link>
-                        <Button color={'black'} onClick={handleLogout}>Logout</Button>
+                        <Link fontSize={'17px'} as={RouterLink} to='/transactions'>Movimientos</Link>
+                        <Link fontSize={'17px'} as={RouterLink} to='/transactions/create'>Enviar dinero</Link>
+                        <Link fontSize={'17px'} as={RouterLink} to='/profile'>Perfil</Link>
+                        <Link fontSize={'17px'} onClick={handleLogout}>Logout</Link>
                     </>
                 ) : null
                 }
-
-                { !user ? (
+                {!user ? (
                     <>
                         <Link as={RouterLink} to='/login'>Log In</Link>
                         <Link as={RouterLink} to='/register'>Register</Link>
-
                     </>
-                ) : null 
+                ) : null
                 }
-
-              
             </HStack>
         </Flex >
     )

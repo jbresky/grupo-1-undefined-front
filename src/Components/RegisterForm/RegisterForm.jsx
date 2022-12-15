@@ -4,11 +4,8 @@ import { useCreateUser, useUpdateUser } from "../../hooks/useUsers";
 import { Formik } from "formik";
 import Form from "./Form";
 import { registerSchema } from "../YupValidator/schemas";
-import { useColorModeValue } from "@chakra-ui/react";
 
 const RegisterForm = () => {
-
-    const formBackground = useColorModeValue("gray.100", "gray.700");
 
     const { auth } = useSelector(state => state);
 
@@ -17,7 +14,7 @@ const RegisterForm = () => {
     const {loading} = auth
 
     return (
-        <div style={{margin: '50px'}}>
+        <div>
             <Formik initialValues={{
                 firstName: "",
                 lastName: "",
@@ -43,7 +40,6 @@ const RegisterForm = () => {
                         touched={touched}
                         errors={errors}
                         loading={loading}
-                        formBackground={formBackground}
                     />
                 )}
             </Formik>

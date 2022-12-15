@@ -23,8 +23,8 @@ const CreateForm = ({
         borderRadius={5}
         w={'500px'}
       >
-<Heading fontSize={'26px'} fontWeight={'bold'} p={4} mb={4}>Crea una categoria de transaccion</Heading>
-          <FormControl pb={6} isInvalid={!!errors.name && touched.name}>
+<Heading size={'lg'} fontWeight={'bold'} mb={8}>Crea una categoria de transaccion</Heading>
+          <FormControl pb={4} isInvalid={!!errors.name && touched.name}>
             <FormLabel htmlFor="name">Nombre</FormLabel>
             <Input
               name="name"
@@ -37,7 +37,7 @@ const CreateForm = ({
               <FormErrorMessage>{errors.name}</FormErrorMessage>
           </FormControl>
 
-          <FormControl pb={6} isInvalid={!!errors.description && touched.description}>
+          <FormControl pb={4} isInvalid={!!errors.description && touched.description}>
             <FormLabel htmlFor="description">Descripcion</FormLabel>
             <Input
             name="description"
@@ -52,7 +52,7 @@ const CreateForm = ({
               </FormErrorMessage>
           </FormControl>
 
-          <Button color={'white'} background="blue.700" type="submit">Submit</Button>
+          <Button mt={4} _hover={0} color={'white'} background="blue.700" type="submit">Submit</Button>
       </Flex>
     </Flex>
     </form>

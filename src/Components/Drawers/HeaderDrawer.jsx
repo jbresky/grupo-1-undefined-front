@@ -22,8 +22,6 @@ export default function HeaderDrawer() {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const btnRef = useRef()
 
-    const { user } = useSelector(state => state.auth)
-
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
@@ -61,7 +59,7 @@ export default function HeaderDrawer() {
                         <Stack spacing={5}>
                             <Link as={RouterLink} to='/profile'>Mi perfil</Link>
                             <Link as={RouterLink} to='/'>Enviar dinero</Link>
-                            <Link as={RouterLink} to='/'>Movimientos</Link>
+                            <Link as={RouterLink} to='/transactions'>Movimientos</Link>
                             <Button onClick={handleLogout} color={'black'} textAlign={'left'}>Cerrar sesión</Button>
                         </Stack>
                     </DrawerBody>

@@ -24,8 +24,8 @@ const EditForm = ({
                     borderRadius={5}
                     w={'500px'}
                 >
-                    <Heading fontSize={'26px'} fontWeight={'bold'} p={4} mb={4}>Editar categoria</Heading>
-                    <FormControl pb={6}>
+                    <Heading size={'lg'} fontWeight={'bold'} mb={8}>Editar categoria</Heading>
+                    <FormControl pb={4}>
                         <FormLabel htmlFor="name">Nombre</FormLabel>
                         <Select name="category" onChange={handleChange}>
                             {categories.map((category) => {
@@ -33,7 +33,7 @@ const EditForm = ({
                             })}
                         </Select>
                     </FormControl>
-                    <FormControl pb={6} isInvalid={!!errors.name && touched.name}>
+                    <FormControl pb={4} isInvalid={!!errors.name && touched.name}>
                     <FormLabel htmlFor="description">Nuevo nombre</FormLabel>
                     <Input
                         name="name"
@@ -41,12 +41,12 @@ const EditForm = ({
                         onChange={handleChange}
                         onBlur={handleBlur}
                         background='white'
-                        placeholder='Gula...'
+                        placeholder='Alquiler...'
                     />
                      <FormErrorMessage>{errors.name}</FormErrorMessage>
                     </FormControl>
 
-                    <FormControl pb={6} isInvalid={!!errors.description && touched.description}>
+                    <FormControl pb={4} isInvalid={!!errors.description && touched.description}>
                         <FormLabel htmlFor="description">Descripcion</FormLabel>
                         <Input
                             name="description"
@@ -60,7 +60,7 @@ const EditForm = ({
                         </FormErrorMessage>
                     </FormControl>
 
-                    <Button color={'white'} background="blue.700" type="submit">Submit</Button>
+                    <Button mt={4} _hover={0} color={'white'} background="blue.700" type="submit">Submit</Button>
                 </Flex>
             </Flex>
         </form>

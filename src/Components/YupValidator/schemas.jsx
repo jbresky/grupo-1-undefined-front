@@ -37,3 +37,17 @@ export const categorySchema = Yup.object({
     name: Yup.string().required('Required'),
     description: Yup.string(),
 })
+
+export const transactionSchema = Yup.object().shape({
+    description: Yup.string(),
+    amount: Yup.number()
+      .required("Amount is a required field")
+      .test(
+        "Is positive?",
+        "The amount must be greater than 0",
+        (value) => value > 0
+      ),
+    categoryId: Yup.number().required("Select one category"),
+    userId: Yup.number().required("Select a user"),
+    date: Yup.date().required(),
+  });

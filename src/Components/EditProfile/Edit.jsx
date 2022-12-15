@@ -15,7 +15,7 @@ const Edit = ({
   return (
     <form onSubmit={handleSubmit}>
       <Container maxW={"md"} margin={"3rem auto"}>
-        <Stack direction={"column"}>
+        <Stack direction={"column"} spacing={4}>
 
           <FormControl isInvalid={!!errors.firstName && touched.firstName}>
             <FormLabel htmlFor="firstName">Nombre</FormLabel>
@@ -60,7 +60,7 @@ const Edit = ({
             <FormErrorMessage>{errors.password}</FormErrorMessage>
           </FormControl>
           
-          <Button disabled={loading} type="submit">Submit</Button>
+          <Button disabled={loading} type="submit">Editar</Button>
         </Stack>
       </Container>
     </form>

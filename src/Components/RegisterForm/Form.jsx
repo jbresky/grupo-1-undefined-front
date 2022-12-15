@@ -22,12 +22,12 @@ const Form = ({
           bg={formBackground}
           p={12}
           borderRadius={5}
-          boxShadow="md"
-          w={'500px'}
+          boxShadow='xl'
+          w={['100%', '500px', '500px', '500px']}
         >
-          <Heading size={'lg'} pb={8}>Crea tu cuenta Alkybank</Heading>
+          <Heading size={'md'} pb={8}>Crea tu cuenta Alkybank</Heading>
           <FormControl pb={6} isInvalid={!!errors.firstName && touched.firstName}>
-            <FormLabel htmlFor="firstName">Nombre</FormLabel>
+            <FormLabel fontSize={14} htmlFor="firstName">Nombre</FormLabel>
             <Input
               id="firstName"
               type="text"
@@ -36,13 +36,12 @@ const Form = ({
               onChange={handleChange}
               onBlur={handleBlur}
               autoComplete="off"
-              background='gray.300'
             />
             <FormErrorMessage>{errors.firstName}</FormErrorMessage>
           </FormControl>
 
           <FormControl pb={6} isInvalid={!!errors.lastName && touched.lastName}>
-            <FormLabel htmlFor="lastName">Apellido</FormLabel>
+            <FormLabel fontSize={14} htmlFor="lastName">Apellido</FormLabel>
             <Input
               id="lastName"
               type="text"
@@ -50,7 +49,6 @@ const Form = ({
               onChange={handleChange}
               onBlur={handleBlur}
               autoComplete="off"
-              background='gray.300'
             />
             <FormErrorMessage>
               {errors.lastName}
@@ -58,7 +56,7 @@ const Form = ({
           </FormControl>
 
           <FormControl pb={6} isInvalid={!!errors.email && touched.email}>
-            <FormLabel htmlFor="email">Email</FormLabel>
+            <FormLabel fontSize={14} htmlFor="email">Email</FormLabel>
             <Input
               id="email"
               type="text"
@@ -66,13 +64,12 @@ const Form = ({
               onChange={handleChange}
               onBlur={handleBlur}
               autoComplete="off"
-              background='gray.300'
             />
             <FormErrorMessage>{errors.email}</FormErrorMessage>
           </FormControl>
 
           <FormControl pb={6} isInvalid={!!errors.password && touched.password}>
-            <FormLabel htmlFor="password">Password</FormLabel>
+            <FormLabel fontSize={14} htmlFor="password">Password</FormLabel>
             <Input
               id="password"
               type="password"
@@ -80,7 +77,6 @@ const Form = ({
               onChange={handleChange}
               onBlur={handleBlur}
               autoComplete="off"
-              background='gray.300'
             />
             <FormErrorMessage>{errors.password}</FormErrorMessage>
           </FormControl>
@@ -88,11 +84,11 @@ const Form = ({
           <Checkbox>
             <Text fontSize={'12px'} color={'#697386'}>Obtener emails de Alkybank sobre actualizacion de productos, noticias fintech y eventos. Podes darte de baja cuando quieras.
             <br/>
-            <Link _hover={0} color={'#635bff'} href='#'>Politica de privacidad</Link>
+            <Link _hover={{color: 'black'}} color={'#635bff'} href='#'>Politica de privacidad</Link>
             </Text>
           </Checkbox>
           </Box>
-          <Button mt={4} disabled={loading} h={12} _hover={{color: 'black'}} color={'white'} background="gray.700" type="submit">Submit</Button>
+          <Button mt={4} disabled={loading} h={12} _hover={0} color={'white'} background="gray.700" type="submit">Submit</Button>
         </Flex>
       </Flex>
     </form>
