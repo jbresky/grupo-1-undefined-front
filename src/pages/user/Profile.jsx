@@ -12,15 +12,15 @@ export default function Profile() {
     return (
         <>
             <Header />
-            <Card background={'gray.50'} color={'gray.800'} borderRadius={'0'} p={4}>
+            <Card background={'gray.50'} color={'gray.800'} borderRadius={'0'} p={[0, 4]}>
 
-                <CardHeader w={['95%', '80%', '80%', '60%']} margin={'auto'}>
+                <CardHeader w={['100%', '80%', '80%', '60%']} margin={'auto'}>
                     <Box w={'40px'} pb={4}>
                         <Link as={RouterLink} to={'/'}>
                             <BiChevronLeft fontSize={25} />
                         </Link>
                     </Box>
-                    <Flex justify={'space-between'}>
+                    <Flex align={'center'} justify={'space-between'}>
                         <Heading size={['sm', 'md', 'md', 'lg']}>Personal details</Heading>
                         <EditButton />
                     </Flex>

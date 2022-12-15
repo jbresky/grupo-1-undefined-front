@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Formik } from "formik";
-import * as Yup from "yup";
 import {
   useColorModeValue,
   useToast,
@@ -11,6 +10,7 @@ import axios from "axios";
 import Header from "../Components/Layout/Header";
 import Footer from "../Components/Layout/Footer";
 import { TransactionsForm } from "../Components/TransactionsForm";
+import { transactionSchema } from "../Components/YupValidator/schemas";
 
 function CreateTransaction(initialValues) {
   const toast = useToast();
@@ -27,20 +27,6 @@ function CreateTransaction(initialValues) {
 
     fetchCategoriesAndUsers();
   }, []);
-
-  const schema = Yup.object().shape({
-    description: Yup.string(),
-    amount: Yup.number()
-      .required("Amount is a required field")
-      .test(
-        "Is positive?",
-        "ERROR: The amount must be greater than 0!",
-        (value) => value > 0
-      ),
-    categoryId: Yup.number().required(),
-    userId: Yup.number().required(),
-    date: Yup.date().required(),
-  });
 
   const formBackground = useColorModeValue("gray.100", "gray.700");
 
@@ -85,7 +71,7 @@ function CreateTransaction(initialValues) {
         <Header />
       </header>
       <Formik
-        validationSchema={schema}
+        validationSchema={transactionSchema}
         initialValues={
           initialValues || {
             description: "",

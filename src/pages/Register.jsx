@@ -2,11 +2,10 @@ import React from 'react'
 import Header from '../Components/Layout/Header'
 import RegisterForm from '../Components/RegisterForm/RegisterForm'
 
-const Register = ({action}) => {
+const Register = () => {
   return (
     <div>
         <Header/>
-        {/* <ContainerForm action={action}/> */}
         <RegisterForm/>
     </div>
   )
