@@ -26,7 +26,7 @@ export default function EditCategory() {
 
     return (
         <>
-            <Button onClick={onOpen}>Editar categoria</Button>
+            <Button _hover={0} backgroundColor='transparent' onClick={onOpen}>Editar categoria</Button>
 
             <Modal
                 initialFocusRef={initialRef}
@@ -34,7 +34,7 @@ export default function EditCategory() {
                 isOpen={isOpen}
                 onClose={onClose}
             >
-                <ModalOverlay />
+                {/* <ModalOverlay /> */}
                 <ModalContent>
                     <ModalCloseButton />
                     <ModalBody pb={6}>

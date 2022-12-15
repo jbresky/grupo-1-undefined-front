@@ -23,7 +23,7 @@ export default function CreateCategory() {
 
   return (
     <>
-      <Button onClick={onOpen}>Crear categoria</Button>
+      <Button _hover={0} backgroundColor='transparent' onClick={onOpen}>Crear categoria</Button>
   
       <Modal
         initialFocusRef={initialRef}
