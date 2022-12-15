@@ -8,24 +8,32 @@ import {
     DrawerCloseButton,
     Button,
     IconButton,
-    Input,
     useDisclosure,
     Link,
     Stack
 } from '@chakra-ui/react'
 import { useRef } from 'react'
-import { Link as RouterLink } from 'react-router-dom'
+import { Link as RouterLink, useNavigate } from 'react-router-dom'
 import { GiHamburgerMenu } from 'react-icons/gi'
+import { useDispatch, useSelector } from 'react-redux'
+import { authLogout } from '../../app/features/authSlice'
 
 export default function HeaderDrawer() {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const btnRef = useRef()
 
+    const { user } = useSelector(state => state.auth)
+
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+    const handleLogout = () => {
+        dispatch(authLogout())
+        navigate('/');
+    };
+
     return (
         <>
-            {/* <Button ref={btnRef} colorScheme='teal' onClick={onOpen}>
-                Open
-            </Button> */}
             <IconButton
                 background={'gray.100'}
                 ref={btnRef}
@@ -54,7 +62,7 @@ export default function HeaderDrawer() {
                             <Link as={RouterLink} to='/profile'>Mi perfil</Link>
                             <Link as={RouterLink} to='/'>Enviar dinero</Link>
                             <Link as={RouterLink} to='/'>Movimientos</Link>
-                            <Link as={RouterLink} to='/'>Gastos</Link>
+                            <Button onClick={handleLogout} color={'black'} textAlign={'left'}>Cerrar sesión</Button>
                         </Stack>
                     </DrawerBody>
 
@@ -62,7 +70,6 @@ export default function HeaderDrawer() {
                         <Button variant='outline' mr={3} onClick={onClose}>
                             Cancel
                         </Button>
-                        <Button colorScheme='teal'>Save</Button>
                     </DrawerFooter>
                 </DrawerContent>
             </Drawer>
