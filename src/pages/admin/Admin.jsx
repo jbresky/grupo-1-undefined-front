@@ -12,7 +12,7 @@ const Admin = () => {
 return (
     <>
         <Header/>
-        <Stack w={'80vw'} p={4} margin={'auto'}>
+        <Stack p={[0, 4]} margin={[1, 'auto']}>
             <Heading pt={4}>
                 Usuarios
             </Heading>

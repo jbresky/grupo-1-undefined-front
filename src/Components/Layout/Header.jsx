@@ -1,11 +1,12 @@
 import React from 'react'
-import { Flex, Heading, Box, HStack, Button, Text } from '@chakra-ui/react';
+import { Flex, Heading, Box, HStack, Button, Text, Avatar, AvatarBadge } from '@chakra-ui/react';
 import HeaderDrawer from '../Drawers/HeaderDrawer';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { Link } from '@chakra-ui/react';
 import { useSelector, useDispatch } from 'react-redux';
 import { authLogout } from '../../app/features/authSlice';
 import AdminMenu from '../Drawers/AdminMenu';
+import AvatarPopover from '../UI/AvatarPopover';
 
 const Header = () => {
 
@@ -31,7 +32,7 @@ const Header = () => {
                     <Link _hover={0} as={RouterLink} to='/'>
                         AlkyBank
                     </Link>
-                    {user && user.roleId === 2 ? (
+                    {user && user.roleId === 1 ? (
                         <Text>{'- ' + user.firstName} 😎</Text>
                     ) : null
                     }
@@ -42,19 +43,23 @@ const Header = () => {
             </Box>
             <HStack display={['none', 'none', 'block']} fontSize={'19px'} color={'gray.100'} spacing={12}>
                 {
-                    user && user.roleId === 2 ? (
+                    user && user.roleId === 1 ? (
                         <>
                             <AdminMenu />
                             <Button _hover={{ color: 'gray' }} color={'white'} backgroundColor={'transparent'} onClick={handleLogout}>Logout</Button>
                         </>
                     ) : null
                 }
-                {user && user.roleId === 1 ? (
+                {user && user.roleId === 2 ? (
                     <>
-                        <Link fontSize={'17px'} as={RouterLink} to='/transactions'>Movimientos</Link>
-                        <Link fontSize={'17px'} as={RouterLink} to='/transactions/create'>Enviar dinero</Link>
-                        <Link fontSize={'17px'} as={RouterLink} to='/profile'>Perfil</Link>
-                        <Link fontSize={'17px'} onClick={handleLogout}>Logout</Link>
+                        <HStack spacing={10}>
+                            <Link fontSize={'17px'} as={RouterLink} to='/transactions'>Movimientos</Link>
+                            <Link fontSize={'17px'} as={RouterLink} to='/transactions/create'>Enviar dinero</Link>
+                            <Link fontSize={'17px'} as={RouterLink} to='/profile'>Perfil</Link>
+                            <Link fontSize={'17px'} onClick={handleLogout}>Logout</Link>
+                            {/* if user.avatar mostrar el avatar con componente avatar, sino, mostrar este popover */}
+                            <AvatarPopover display={['none', 'none', 'none', 'block']}/>
+                        </HStack>
                     </>
                 ) : null
                 }

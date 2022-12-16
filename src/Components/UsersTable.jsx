@@ -1,6 +1,7 @@
-import { Box, TableContainer, Tbody, Thead,Table, Tr, Th, Td } from '@chakra-ui/react'
+import { Box, TableContainer, Tbody, Thead, Table, Tr, Th, Td, IconButton, } from '@chakra-ui/react'
 import { useNavigate } from 'react-router'
-import { useTable, useSortBy, usePagination } from "react-table";
+import { FcSearch } from 'react-icons/fc'
+import { Link } from 'react-router-dom';
 
 const UsersTable = ({ users }) => {
 
@@ -11,16 +12,16 @@ const UsersTable = ({ users }) => {
     }
 
     return (
-        <TableContainer maxWidth={'60vw'} p={4}>
-            <Table  size={'md'} variant='striped'>
+        <TableContainer pt={8}>
+            <Table size={'md'} border={'1px'} borderStyle={'groove'} variant='striped' colorScheme='gray'>
                 <Thead>
                     <Tr>
                         <Th>ID</Th>
                         <Th>Apellido</Th>
                         <Th>Nombre</Th>
                         <Th>Email</Th>
-                        {/* <Th>Balance</Th>
-                        <Th>Detalle</Th> */}
+                        <Th>Balance</Th>
+                        <Th>Detalle</Th>
                     </Tr>
                 </Thead>
                 <Tbody>
@@ -38,12 +39,18 @@ const UsersTable = ({ users }) => {
                             <Td key={index}>
                                 {user.email}
                             </Td>
-                            {/* <Td key={index}>
-                                {user.balance}
+                            <Td key={index}>
+                                $ {user.balance}
                             </Td>
                             <Td key={index}>
-                                icono para ver usuario
-                            </Td> */}
+                                <Link to={`/admin/user${user.id}`}>
+                                    <IconButton size={'lg'}
+                                        background={'transparent'}
+                                        _hover={{ transform: 'scale(1.5)' }}
+                                        // onClick={userDetail(user.id)}
+                                        icon={<FcSearch />} />
+                                </Link>
+                            </Td>
                         </Box>
                     ))}
                 </Tbody>

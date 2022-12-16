@@ -24,7 +24,7 @@ function EditButton() {
           <ModalHeader>Profile data</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <EditForm/>
+            <EditForm onclick={onClose}/>
           </ModalBody>
 
           <ModalFooter>

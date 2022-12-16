@@ -1,6 +1,6 @@
 import {useQuery} from '@tanstack/react-query'
 
-import {getRequest} from '../services/httpRequest'
+import {getRequest} from '../services/http-request'
 
 const fetchBalance = () => getRequest('/transactions/me')
 

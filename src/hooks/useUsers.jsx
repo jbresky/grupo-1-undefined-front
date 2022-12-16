@@ -1,5 +1,4 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { getUsers } from '../api/usersApi';
 import { useNavigate } from 'react-router';
 import {
     deleteRequest,
@@ -8,7 +7,7 @@ import {
     putRequest,
 } from '../services/http-request'
 
-const fetchUsers = () => getUsers();
+const fetchUsers = () => getRequest('/users/')
 const fetchMe = () => getRequest('/auth/me/')
 const fetchUserDetails = (id) => getRequest(`/users/${id}`)
 const createUser = (user) => postRequest('/users/', user)

@@ -1,7 +1,7 @@
 import { Box, Heading, Card, CardHeader, CardBody, Stack, Text, StackDivider, Flex, Link } from '@chakra-ui/react'
 import React from 'react'
 import { BiChevronLeft } from 'react-icons/bi'
-import { Link as RouterLink } from 'react-router-dom'
+import { Link as RouterLink, Outlet } from 'react-router-dom'
 import Header from '../../Components/Layout/Header'
 import EditButton from '../../Components/EditProfile/EditButton'
 
@@ -68,8 +68,10 @@ export default function Profile() {
                         </Box>
                     </Stack>
                 </CardBody>
+            <Outlet/>
             </Card>
-            {/* <Spacing bg={'gray.800'} /> */}
+            {/* Si user.avatar mostrar componente de editar avatar (el popover esta pero como un texto de "editar avatar", cuando hace click se renderiza el Outlet) */}
+            {/* una vez que se edita, manejar el navigate para que vuelva a /profile        */}
         </>
     )
 }

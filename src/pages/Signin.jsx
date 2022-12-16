@@ -41,7 +41,7 @@ function Signin() {
                   title: "Login.",
                   description: "User logged successfully.",
                   status: "success",
-                  duration: 9000,
+                  duration: 3000,
                   isClosable: true,
                   render: () => (
                     <Alert status="success">

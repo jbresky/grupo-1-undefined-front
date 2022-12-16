@@ -8,7 +8,8 @@ const Edit = ({
   handleSubmit,
   touched,
   errors,
-  loading
+  loading,
+  onclick
 }) => {
   const { firstName, lastName, password } = initialValues;
 
@@ -60,7 +61,7 @@ const Edit = ({
             <FormErrorMessage>{errors.password}</FormErrorMessage>
           </FormControl>
           
-          <Button disabled={loading} type="submit">Editar</Button>
+          <Button onClick={onclick} disabled={loading} type="submit">Editar</Button>
         </Stack>
       </Container>
     </form>

@@ -1,32 +1,40 @@
 import { Flex, Heading, Input, Button, Select, Text, FormControl, FormErrorMessage, Box } from "@chakra-ui/react";
+import { useNavigate } from "react-router";
 
-export const TransactionsForm = ({
+const TransactionsForm = ({
   handleSubmit,
-  formBackground,
   handleBlur,
   values,
   errors,
   touched,
   handleChange,
+  isLoading,
   categories,
-  users
-}) => {
+  users,
+}) => 
+{
+  const navigate = useNavigate()
+  const handleNavigate = () => {
+    navigate('/')
+  }
   return (
     <form noValidate onSubmit={handleSubmit}>
-      <Box mt={20} mb={20}>
-        <Flex m={'auto'} w={['100%', '80%', '60%', '40%']} h="100vh" alignItems="center" justifyContent="center">
+      <Box m={'auto'}>
+        <Flex m={'auto'} alignItems="center" justifyContent="center">
           <Flex
             flexDirection="column"
-            bg={formBackground}
-            p={12}
+            p={8}
             borderRadius={8}
             boxShadow="md"
             rowGap={2}
-            w={'100%'}
+            backgroundColor={'gray.100'}
+            w={'60%'}
           >
+            <Text _hover={{cursor: 'pointer'}} onClick={handleNavigate}>Volver</Text>
             <Heading size={'lg'} mb={6}>Create Transaction</Heading>
-            <FormControl pb={4} isInvalid={!!errors.description && touched.description}>
+            <FormControl pb={2} isInvalid={!!errors.description && touched.description}>
               <Input
+              backgroundColor={'white'}
                 type="text"
                 name="description"
                 onChange={handleChange}
@@ -38,8 +46,9 @@ export const TransactionsForm = ({
               />
               <FormErrorMessage>{errors.description}</FormErrorMessage>
             </FormControl>
-            <FormControl pb={4} isInvalid={!!errors.amount && touched.amount}>
+            <FormControl pb={2} isInvalid={!!errors.amount && touched.amount}>
               <Input
+              backgroundColor={'white'}
                 type="number"
                 name="amount"
                 onChange={handleChange}
@@ -50,8 +59,8 @@ export const TransactionsForm = ({
               />
               <FormErrorMessage>{errors.amount}</FormErrorMessage>
             </FormControl>
-            <FormControl pb={4} isInvalid={!!errors.categoryId && touched.categoryId}>
-              <Select pb={4} placeholder='Select a category' name="categoryId" onChange={handleChange}>
+            <FormControl pb={2} isInvalid={!!errors.categoryId && touched.categoryId}>
+              <Select backgroundColor={'white'} pb={2} placeholder='Select a category' name="categoryId" onChange={handleChange}>
                 {categories.map((category) => {
                   return <option key={category.id} value={category.id}>{category.name}</option>;
                 })}
@@ -59,8 +68,9 @@ export const TransactionsForm = ({
               <FormErrorMessage>{errors.categoryId}</FormErrorMessage>
             </FormControl>
 
-            <FormControl pb={4} isInvalid={!!errors.userId && touched.userId} >
-              <Select pb={4} name="userId" placeholder="Select a user" onChange={handleChange}>
+            <FormControl pb={2} isInvalid={!!errors.userId && touched.userId} >
+              <Select  backgroundColor={'white'}
+              pb={2} name="userId" placeholder="Select a user" onChange={handleChange}>
                 {users.map((user) => {
                   return <option key={user.id} value={user.id}>{`${user.firstName} ${user.lastName}`}</option>;
                 })}
@@ -68,8 +78,9 @@ export const TransactionsForm = ({
               <FormErrorMessage>{errors.userId}</FormErrorMessage>
             </FormControl>
 
-            <FormControl pb={4} isInvalid={!!errors.date && touched.date}>
+            {/* <FormControl pb={2} isInvalid={!!errors.date && touched.date}>
               <Input
+               backgroundColor={'white'}
                 type="date"
                 name="date"
                 onChange={handleChange}
@@ -79,9 +90,9 @@ export const TransactionsForm = ({
                 className="form-control"
               />
               <FormErrorMessage>{errors.date}</FormErrorMessage>
-            </FormControl>
+            </FormControl> */}
 
-            <Button mt={2} _hover={0} backgroundColor={'gray.700'} color={'white'} mb={8} type="submit">
+            <Button disabled={isLoading} mt={2} _hover={0} backgroundColor={'gray.700'} color={'white'} mb={8} type="submit">
               Create
             </Button>
           </Flex>
@@ -90,3 +101,5 @@ export const TransactionsForm = ({
     </form>
   );
 };
+
+export default TransactionsForm

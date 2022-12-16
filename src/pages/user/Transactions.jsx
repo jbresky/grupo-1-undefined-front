@@ -12,28 +12,41 @@ import {
 } from '@chakra-ui/react'
 import axios from "axios";
 import { useNavigate } from "react-router";
-import Header from "../Components/Layout/Header";
-import Footer from "../Components/Layout/Footer";
-import { useSelector } from "react-redux";
-import localStorage from "../utils/localStorage";
+import Header from "../../Components/Layout/Header";
+import Footer from "../../Components/Layout/Footer";
+import useCreateTransaction from "../../hooks/useTransaction";
+import { useGetMe } from "../../hooks/useUsers";
+import useGetBalance from "../../hooks/useBalance";
+import HomeSkeleton from "../../Components/UI/HomeSkeleton";
 
 function Transactions() {
 
-  const {user} = useSelector(state => state.auth) 
-  const [transactions, setTransactions] = useState([]);
-  const navigate = useNavigate();
-  console.log(localStorage.read('alkybank'));
-  const localStor = localStorage.read('alkybank');
-  console.log(localStor.userInfo.id);
+  // const { data: users } = userGetUser()
 
-  useEffect(() => {
-    const fetchTransactions = async () => {
-      const transactions = await axios.get(`/transactions/${localStor.userInfo.id}`);
-      setTransactions(transactions.data?.body ?? []);
-    };
+  // const { data: me, isLoading: isLoadingMe } = useGetMe();
 
-    fetchTransactions();
-  }, []);
+  const { data, isLoading } = useGetBalance()
+
+  const { transactions } = data
+
+  // const {mutate: transferTo } = useCreateTransaction
+  if(isLoading){
+    return <HomeSkeleton/>
+  }
+  // const {user} = useSelector(state => state.auth) 
+  // const [transactions, setTransactions] = useState([]);
+  // const navigate = useNavigate();
+  // const localStor = localStorage.read('alkybank');
+  // console.log(localStor.userInfo.id);
+
+  // useEffect(() => {
+  //   const fetchTransactions = async () => {
+  //     const transactions = await axios.get(`/transactions/${localStor.userInfo.id}`);
+  //     setTransactions(transactions.data?.body ?? []);
+  //   };
+
+  //   fetchTransactions();
+  // }, []);
 
   return (
     <div>

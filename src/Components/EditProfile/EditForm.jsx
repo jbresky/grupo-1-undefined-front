@@ -6,7 +6,7 @@ import { Formik } from "formik";
 import Edit from "./Edit";
 import { editSchema } from "../YupValidator/schemas";
 
-const EditForm = () => {
+const EditForm = ({onclick}) => {
 
     const { user } = useSelector(state => state.auth);
 
@@ -51,6 +51,7 @@ const EditForm = () => {
                         touched={touched}
                         errors={errors}
                         loading={false}
+                        onclick={onclick}
                     />
                 )}
             </Formik>
