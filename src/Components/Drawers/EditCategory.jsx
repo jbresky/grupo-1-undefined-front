@@ -17,7 +17,6 @@ export default function EditCategory() {
     const { isOpen, onOpen, onClose } = useDisclosure()
 
     const { data: categories } = useGetCategory();
-    console.log(categories);
 
     const { mutate: editCategory } = useEditCategory()
 

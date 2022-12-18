@@ -17,11 +17,13 @@ import { Link as RouterLink, useNavigate } from 'react-router-dom'
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { useDispatch, useSelector } from 'react-redux'
 import { authLogout } from '../../app/features/authSlice'
+import { isLogged } from '../../utils/isLogged'
 
 export default function HeaderDrawer() {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const btnRef = useRef()
 
+    const logged = isLogged();
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
@@ -57,10 +59,19 @@ export default function HeaderDrawer() {
 
                     <DrawerBody>
                         <Stack spacing={5}>
-                            <Link as={RouterLink} to='/profile'>Mi perfil</Link>
-                            <Link as={RouterLink} to='/'>Enviar dinero</Link>
-                            <Link as={RouterLink} to='/transactions'>Movimientos</Link>
-                            <Button onClick={handleLogout} color={'black'} textAlign={'left'}>Cerrar sesión</Button>
+                            {logged ? (
+                                <>
+                                <Link as={RouterLink} to='/profile'>Mi perfil</Link>
+                                <Link as={RouterLink} to='/'>Enviar dinero</Link>
+                                <Link as={RouterLink} to='/transactions'>Movimientos</Link>
+                                <Button onClick={handleLogout} color={'black'} textAlign={'left'}>Cerrar sesión</Button>
+                                </>
+                            ) : (
+                                <>
+                                 <Link as={RouterLink} to='/login'>Sign in</Link>
+                                <Link as={RouterLink} to='/register'>Register</Link>
+                                </>
+                            )}
                         </Stack>
                     </DrawerBody>
 
