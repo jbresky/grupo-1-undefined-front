@@ -12,7 +12,7 @@ const Balance = ({ balance }) => {
   
   return (
     // <Card boxShadow={'base'} w={['100%', '100%', '500px']} align='flex-start'>
-    <Card boxShadow={'base'} w={'100%'} align='flex-start'>
+    <Card boxShadow={'base'} w={'100%'} align={['flex-start']}>
       <CardHeader pb={0}>
         <Heading size='md'>Saldo de Alkybank</Heading>
       </CardHeader>
