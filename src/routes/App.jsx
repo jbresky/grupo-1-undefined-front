@@ -26,9 +26,9 @@ const App = () => {
                         <Route path='/login' element={!logged ? <Signin /> : <Navigate to='/' />} />
                         <Route exact path='/register' element={!logged ? <Register /> : <Navigate to='/' />} />
                         <Route path='/' element={logged ? <Home /> : <Navigate to='/login' />}>
-                            <Route path=':transaction' element={<CreateTransaction />} />
+                            <Route path=':transaction-create' element={<CreateTransaction />} />
                         </Route>
-                        <Route exact path='/transactions/create' element={<CreateTransaction />} />
+                        <Route exact path='/transactions' element={<Transactions />} />
                         <Route exact path='/profile' element={<Profile />}>
                             <Route path=':avatar' element={<Avatar />}></Route>
                         </Route>

@@ -29,7 +29,7 @@ const EditForm = ({
                     <FormControl pb={4}>
                         <FormLabel htmlFor="name">Nombre</FormLabel>
                         <Select name="category" onChange={handleChange}>
-                            {categories.map((category) => {
+                            {categories?.map((category) => {
                                 return <option key={category.id} value={category.id}>{category.name}</option>;
                             })}
                         </Select>

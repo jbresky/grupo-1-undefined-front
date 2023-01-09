@@ -48,6 +48,5 @@ export const transactionSchema = Yup.object().shape({
         (value) => value > 0
       ),
     categoryId: Yup.number().required("Select one category"),
-    userId: Yup.number().required("Select a user"),
-    date: Yup.date().required(),
+    destinationId: Yup.number().required("Select a user")
   });

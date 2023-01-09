@@ -13,5 +13,5 @@ export function isLoggedAdmin(){
     const { user } = useSelector(state => state.auth)
 
     if(!token || !user) return undefined
-    return user.roleId === 1
+    return user.roleId === 2
 }

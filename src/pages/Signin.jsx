@@ -10,10 +10,11 @@ import {
   Link,
   Flex
 } from "@chakra-ui/react";
-import Header from "../Components/Layout/Header";
 import { LoginForm } from "../Components/LoginForm";
 import { authLogin } from "../app/features/authSlice";
 import { loginSchema } from "../Components/YupValidator/schemas";
+import PublicHeader from "../Components/Layout/PublicHeader";
+import { Link as RouterLink } from 'react-router-dom'
 
 function Signin() {
   const { auth } = useSelector(state => state)
@@ -26,13 +27,12 @@ function Signin() {
 
   return (
     <div>
-      <header>
-        <Header />
-      </header>
-      <Flex pb={'100px'} direction="column" alignItems={'left'} m='auto' w={['100%', '100%', '500px', '500px']}>
+      <PublicHeader />
+      <Flex pb={'100px'} direction="column" alignItems={'left'} m='auto' w={['90%', '80%', '500px', '500px']}>
         <Formik
           validationSchema={loginSchema}
           initialValues={{ email: "", password: "" }}
+          // onSubmit={values => console.log(values)}
           onSubmit={(values) => {
             const response = dispatch(authLogin(values));
             response.then((res) => {
@@ -92,7 +92,7 @@ function Signin() {
           )}
         </Formik>
         <Box pt={6}>
-          ¿No tienes una cuenta? <Link _hover={{ color: 'black' }} color={'#635bff'} href='/register'>Registrate</Link>
+          ¿No tienes una cuenta? <Link as={RouterLink} _hover={{ color: 'black' }} color={'#635bff'} to='/register'>Registrate</Link>
         </Box>
       </Flex>
     </div>

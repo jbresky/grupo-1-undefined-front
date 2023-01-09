@@ -1,7 +1,7 @@
 import { Box, Heading, Card, CardHeader, CardBody, Stack, Text, StackDivider, Flex, Link } from '@chakra-ui/react'
 import React from 'react'
 import { BiChevronLeft } from 'react-icons/bi'
-import { Link as RouterLink, Outlet } from 'react-router-dom'
+import { Link as RouterLink, Outlet, useNavigate } from 'react-router-dom'
 import Header from '../../Components/Layout/Header'
 import EditButton from '../../Components/EditProfile/EditButton'
 
@@ -9,6 +9,12 @@ import { useDispatch, useSelector } from 'react-redux';
 
 export default function Profile() {
     const { user } = useSelector(state => state.auth)
+
+    const navigate = useNavigate();
+
+    const goBack = () => {
+        navigate(-1)
+    }
     return (
         <>
             <Header />
@@ -70,6 +76,10 @@ export default function Profile() {
                 </CardBody>
             <Outlet/>
             </Card>
+            {user.avatar ? (
+                ''
+            ) : null
+            }
             {/* Si user.avatar mostrar componente de editar avatar (el popover esta pero como un texto de "editar avatar", cuando hace click se renderiza el Outlet) */}
             {/* una vez que se edita, manejar el navigate para que vuelva a /profile        */}
         </>

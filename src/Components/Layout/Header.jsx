@@ -41,7 +41,7 @@ const Header = () => {
             <HStack display={['none', 'none', 'block']} fontSize={'19px'} color={'gray.100'} spacing={12}>
                 <HStack spacing={10}>
                     <Link fontSize={'17px'} as={RouterLink} to='/transactions'>Movimientos</Link>
-                    <Link fontSize={'17px'} as={RouterLink} to='/transactions/create'>Enviar dinero</Link>
+                    <Link fontSize={'17px'} as={RouterLink} to='/transaction-create'>Enviar dinero</Link>
                     <Link fontSize={'17px'} as={RouterLink} to='/profile'>Perfil</Link>
                     <Link fontSize={'17px'} onClick={handleLogout}>Logout</Link>
                     {/* if user.avatar mostrar el avatar con componente avatar, sino, mostrar este popover */}

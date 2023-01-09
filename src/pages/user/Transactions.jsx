@@ -63,12 +63,13 @@ function Transactions() {
             </Tr>
           </Thead>
           <Tbody>
-            {transactions.map(transaction => {
+            {transactions?.map(transaction => {
               return (
                 <Tr key={transaction.id}>
                   <Td>{transaction.description}</Td>
                   <Td>{transaction.amount}</Td>
                   <Td>{transaction.date}</Td>
+                  {/*<Td> --> transaction.category (repo Fede) De: if category.id == 1 etc... */ }
                 </Tr>
               )
             })}

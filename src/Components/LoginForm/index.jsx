@@ -50,7 +50,7 @@ export const LoginForm = ({
           <FormErrorMessage>{errors.password}</FormErrorMessage>
         </FormControl>
         <Checkbox pt={1}><Text fontSize={'14px'}>Recordarme por una semana</Text></Checkbox>
-        <Button mt={8} h={12} disabled={loading} _hover={0} color={'white'} background="gray.700" mb={4} type="submit">
+        <Button mt={8} h={12} disabled={loading} _hover={{background: "gray.600"}} color={'white'} background="gray.700" mb={4} type="submit">
           Log In
         </Button>
       </Flex>

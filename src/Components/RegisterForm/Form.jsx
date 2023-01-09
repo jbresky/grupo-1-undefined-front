@@ -22,7 +22,7 @@ const Form = ({
           bg={formBackground}
           p={12}
           borderRadius={5}
-          boxShadow='xl'
+          boxShadow='md'
           w={['100%', '500px', '500px', '500px']}
         >
           <Heading size={'md'} pb={8}>Crea tu cuenta Alkybank</Heading>
@@ -88,7 +88,7 @@ const Form = ({
             </Text>
           </Checkbox>
           </Box>
-          <Button mt={4} disabled={loading} h={12} _hover={0} color={'white'} background="gray.700" type="submit">Submit</Button>
+          <Button mt={4} disabled={loading} h={12} _hover={{background:"gray.600"}} color={'white'} background="gray.700" type="submit">Submit</Button>
         </Flex>
       </Flex>
     </form>

@@ -47,9 +47,10 @@ export const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(authLogin.fulfilled, (state, action) => {
-      // console.log(action.payload)
       if (action.payload?.body?.ok) {
         state.user = action.payload.body.userInfo;
+        state.logged = true
+        state.token = action.payload.body.token
       }
     });
   }
