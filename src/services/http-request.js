@@ -11,7 +11,7 @@ const httpRequest = (verb, endpoint, data, headers = {}) => {
 
   config.method = verb
 
-  config.url = import.meta.env.VITE_API_URL + endpoint
+  config.url = 'http://localhost:3000'+endpoint
 
   if (data) config.data = data
 

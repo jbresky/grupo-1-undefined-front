@@ -1,5 +1,7 @@
-import { Box, TableContainer, Tbody, Thead,Table, Tr, Th, Td } from '@chakra-ui/react'
+import { Box, TableContainer, Tbody, Thead, Table, Tr, Th, Td, IconButton, } from '@chakra-ui/react'
 import { useNavigate } from 'react-router'
+import { FcSearch } from 'react-icons/fc'
+import { Link } from 'react-router-dom';
 
 const UsersTable = ({ users }) => {
 
@@ -10,8 +12,8 @@ const UsersTable = ({ users }) => {
     }
 
     return (
-        <TableContainer whiteSpace={'nowrap'} p={4}>
-            <Table size={'md'} variant='striped'>
+        <TableContainer pt={8}>
+            <Table size={'md'} border={'1px'} borderStyle={'groove'} variant='striped' colorScheme='gray'>
                 <Thead>
                     <Tr>
                         <Th>ID</Th>
@@ -23,25 +25,31 @@ const UsersTable = ({ users }) => {
                     </Tr>
                 </Thead>
                 <Tbody>
-                    {users.map(user => (
+                    {users.map((user, index) => (
                         <Box as="tr">
-                            <Td>
+                            <Td key={index}>
                                 {user.id}
                             </Td>
-                            <Td>
+                            <Td key={index}>
                                 {user.lastName}
                             </Td>
-                            <Td>
+                            <Td key={index}>
                                 {user.firstName}
                             </Td>
-                            <Td>
+                            <Td key={index}>
                                 {user.email}
                             </Td>
-                            <Td>
-                                user.balance
+                            <Td key={index}>
+                                $ {user.balance}
                             </Td>
-                            <Td>
-                                icono para ver usuario
+                            <Td key={index}>
+                                <Link to={`/admin/user${user.id}`}>
+                                    <IconButton size={'lg'}
+                                        background={'transparent'}
+                                        _hover={{ transform: 'scale(1.5)' }}
+                                        // onClick={userDetail(user.id)}
+                                        icon={<FcSearch />} />
+                                </Link>
                             </Td>
                         </Box>
                     ))}

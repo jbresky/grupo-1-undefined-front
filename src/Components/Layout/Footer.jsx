@@ -1,16 +1,14 @@
-
 import { Box, Flex, Heading, HStack, Link, Stack, Text } from "@chakra-ui/react"
 import { AiOutlineInstagram } from 'react-icons/ai';
 import { BsTwitter } from 'react-icons/bs';
 import { FaFacebookSquare } from 'react-icons/fa';
 import { AiFillGithub } from 'react-icons/ai';
 
-
 export default function Footer() {
     return (
         <>
-            <Flex fontSize={18} as='footer' alignItems={'flex-start'} bg={'#edf2f7'} flexDir={'column'} p={3}>
-                <Flex p={4} gap={50}>
+            <Flex as='footer' alignItems={'flex-start'} bg={'#edf2f7'} flexDir={'column'} p={3}>
+                <Flex direction={['column', 'column', 'row']} p={4} gap={['20px', '50px']}>
                     <Box className="us">
                         <Heading fontSize={20} pb={3}>Nosotros</Heading>
                         <Stack>

@@ -5,12 +5,9 @@ import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { Link } from '@chakra-ui/react';
 import { useSelector, useDispatch } from 'react-redux';
 import { authLogout } from '../../app/features/authSlice';
-import AvatarPopover from '../UI/AvatarPopover';
-import { isLogged, isLoggedAdmin } from '../../utils/isLogged';
+import AdminMenu from '../Drawers/AdminMenu';
 
-const Header = () => {
-    // const checkLoggedUser = isLogged()
-    // const checkLoggedAdmin = isLoggedAdmin()
+const AdminHeader = () => {
 
     const { user } = useSelector(state => state.auth)
 
@@ -31,25 +28,22 @@ const Header = () => {
             p={6}
         >
             <Heading color={'gray.100'} size={'lg'}>
-                <Link _hover={0} as={RouterLink} to='/'>
-                    AlkyBank
-                </Link>
+                <Flex justify={'center'} gap={3}>
+                    <Link _hover={0} as={RouterLink} to='/'>
+                        AlkyBank
+                    </Link>
+                    <Text>{'- ' + user.firstName} 😎</Text>
+                </Flex>
             </Heading >
             <Box display={['block', 'block', 'none']}>
                 <HeaderDrawer />
             </Box>
             <HStack display={['none', 'none', 'block']} fontSize={'19px'} color={'gray.100'} spacing={12}>
-                <HStack spacing={10}>
-                    <Link fontSize={'17px'} as={RouterLink} to='/transactions'>Movimientos</Link>
-                    <Link fontSize={'17px'} as={RouterLink} to='/transaction-create'>Enviar dinero</Link>
-                    <Link fontSize={'17px'} as={RouterLink} to='/profile'>Perfil</Link>
-                    <Link fontSize={'17px'} onClick={handleLogout}>Logout</Link>
-                    {/* if user.avatar mostrar el avatar con componente avatar, sino, mostrar este popover */}
-                    <AvatarPopover display={['none', 'none', 'none', 'block']} />
-                </HStack>
+                <AdminMenu />
+                <Button _hover={{ color: 'gray' }} color={'white'} backgroundColor={'transparent'} onClick={handleLogout}>Logout</Button>
             </HStack>
         </Flex >
     )
 }
 
-export default Header
+export default AdminHeader
