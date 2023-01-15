@@ -52,9 +52,6 @@ export default function AvatarPopover({display}) {
           >
             <ButtonGroup size='sm'>
               <Button onClick={handleNavigate} colorScheme='cyan'>Subir una foto</Button>
-              <Button background={'transparent'} _hover={{color: 'gray'}} ref={initialFocusRef}>
-                  Ignorar
-              </Button>
             </ButtonGroup>
           </PopoverFooter>
         </PopoverContent>
