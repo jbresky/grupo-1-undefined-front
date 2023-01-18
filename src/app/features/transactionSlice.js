@@ -14,7 +14,7 @@ export const transactionSlice = createSlice({
     reducers: {
         setTransactions: (state, action) => {
             state.transactions = action.payload.transactions;
-            state.transactionsFilter = action.payload.transactionsFilter;
+            // state.transactionsFilter = action.payload.transactionsFilter;
             state.balance = action.payload.balance
         }
     }

@@ -76,19 +76,19 @@ export const TransactionsForm = ({
 
             <FormControl pb={2} isInvalid={!!errors.destinationId && touched.destiationId} >
               <Select backgroundColor={'white'}
-                pb={2} name="destinationId" onChange={handleChange}>
+                pb={2} name="toUserId" onChange={handleChange}>
                   <option selected disabled>Select a user</option>
                 {users?.map((user) => {
                   return <option key={user.id} value={user.id}>{`${user.firstName} ${user.lastName}`}</option>;
                 })}
               </Select>
-              <FormErrorMessage>{errors.userId}</FormErrorMessage>
+              <FormErrorMessage>{errors.toUserId}</FormErrorMessage>
             </FormControl>
-            <Input
+            {/* <Input
             display={'none'}
             name="userId"
             value={values.userId}
-            ></Input>
+            ></Input> */}
 
             {/* <FormControl pb={2} isInvalid={!!errors.date && touched.date}>
               <Input

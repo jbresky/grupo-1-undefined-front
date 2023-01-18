@@ -1,23 +1,24 @@
 import { Card, CardHeader, CardBody, CardFooter, Text, Heading, Button } from '@chakra-ui/react'
 // import { Link as RouterLink } from 'react-router-dom'
 import { useNavigate } from 'react-router';
-// import { useSelector } from 'react-redux'
-import useGetBalance from '../../hooks/useBalance';
+import { useDispatch, useSelector } from 'react-redux'
+import { getTransactions } from '../../app/actions/transactionActions';
+import { useEffect } from 'react';
 const Balance = () => {
 
-  // const { user } = useSelector(state => state.auth)
+  const dispatch = useDispatch();
+  const { user } = useSelector(state => state.auth)
 
   const navigate = useNavigate();
 
-  const { data } = useGetBalance();
+  const { balance } = useSelector(state => state.transactions)
 
-  let balance;
-  if(data){
-    balance = data.balance
-    // console.log(balance);
-  }
-  console.log(balance);
-  // const { balance } = data
+  useEffect(() => {
+    const interval = setInterval(() => dispatch(getTransactions(user.id)), 7000);
+    dispatch(getTransactions(user.id));
+
+    return () => clearInterval(interval)
+  }, [dispatch])
 
   const handleNavigate = () => {
     navigate('/transaction-create')
@@ -31,10 +32,7 @@ const Balance = () => {
       </CardHeader>
       <CardBody>
         <Heading size={'2xl'}>$
-          {
-            // user?.balance ? user.balance : '0,00'
-            balance
-          }
+          { balance }
         </Heading>
         <Text pt={2} fontSize={'14px'}>Disponible</Text>
       </CardBody>
