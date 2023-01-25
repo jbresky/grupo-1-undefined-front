@@ -9,78 +9,70 @@ import {
   Button,
   TableContainer,
   Flex,
+  Heading,
+  Box,
 } from '@chakra-ui/react'
-import axios from "axios";
-import { useNavigate } from "react-router";
 import Header from "../../Components/Layout/Header";
 import Footer from "../../Components/Layout/Footer";
-import useCreateTransaction from "../../hooks/useTransaction";
-import { useGetMe } from "../../hooks/useUsers";
-import useGetBalance from "../../hooks/useBalance";
 import HomeSkeleton from "../../Components/UI/HomeSkeleton";
+import { useDispatch, useSelector } from "react-redux";
+import { getTransactions } from "../../app/actions/transactionActions";
+import Filter from "./TransactionFilter";
 
 function Transactions() {
 
-  // const { data: users } = userGetUser()
+  const dispatch = useDispatch();
+  const { user } = useSelector(state => state.auth)
+  const { transactionsFilter, filter } = useSelector(state => state.transactions)
 
-  // const { data: me, isLoading: isLoadingMe } = useGetMe();
+  const [isLoading, setLoading] = useState(true);
 
-  const { data, isLoading } = useGetBalance()
+  useEffect(() => {
+    dispatch(getTransactions(user.id, filter));
 
-  const { transactions } = data
-
-  // const {mutate: transferTo } = useCreateTransaction
-  if(isLoading){
-    return <HomeSkeleton/>
-  }
-  // const {user} = useSelector(state => state.auth) 
-  // const [transactions, setTransactions] = useState([]);
-  // const navigate = useNavigate();
-  // const localStor = localStorage.read('alkybank');
-  // console.log(localStor.userInfo.id);
-
-  // useEffect(() => {
-  //   const fetchTransactions = async () => {
-  //     const transactions = await axios.get(`/transactions/${localStor.userInfo.id}`);
-  //     setTransactions(transactions.data?.body ?? []);
-  //   };
-
-  //   fetchTransactions();
-  // }, []);
+    setTimeout(() => setLoading(false), 1000);
+  }, [dispatch, filter]);
 
   return (
     <div>
       <header>
         <Header />
       </header>
-      <TableContainer padding="30px 15px">
-        <Table variant='simple'>
-          <Thead>
-            <Tr>
-              <Th>Description</Th>
-              <Th>Amount</Th>
-              <Th>Date</Th>
-            </Tr>
-          </Thead>
-          <Tbody>
-            {transactions?.map(transaction => {
-              return (
-                <Tr key={transaction.id}>
-                  <Td>{transaction.description}</Td>
-                  <Td>{transaction.amount}</Td>
-                  <Td>{transaction.date}</Td>
-                  {/*<Td> --> transaction.category (repo Fede) De: if category.id == 1 etc... */ }
+      {isLoading ? <HomeSkeleton /> : (
+        <div>
+          {!transactionsFilter ? <Heading fontSize={30} mt={10} ml={10}>No transactions to see here...</Heading> : ''}
+          <Box mt={'30px'} ml={'40px'}>
+            <Filter currentFilter={filter}></Filter>
+          </Box>
+          <TableContainer padding="30px 15px">
+            <Table variant='striped'>
+              <Thead>
+                <Tr>
+                  <Th>Description</Th>
+                  <Th>Type</Th>
+                  <Th>Amount</Th>
+                  <Th>Date</Th>
                 </Tr>
-              )
-            })}
-          </Tbody>
-        </Table>
-      </TableContainer>
-      <Flex padding="0 15px">
-        <Button colorScheme="teal" mb={8} type="submit" onClick={() => { navigate('/transactions/create') }}>
-          Create
-        </Button>
-      </Flex>
+              </Thead>
+              <Tbody>
+                {transactionsFilter?.map(transaction => {
+                  return (
+                    <Tr key={transaction.id}>
+                      <Td>{transaction.description}</Td>
+                      <Td>{transaction.type}</Td>
+                      <Td>$ {transaction.amount}</Td>
+                      <Td>{transaction.createdAt}</Td>
+                    </Tr>
+                  )
+                })}
+              </Tbody>
+            </Table>
+          </TableContainer>
+          <Flex padding="0 15px">
+            <Box height={'8rem'}/>
+          </Flex>
+        </div>
+      )}
       <footer>
         <Footer />
       </footer>

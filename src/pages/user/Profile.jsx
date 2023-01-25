@@ -1,4 +1,4 @@
-import { Box, Heading, Card, CardHeader, CardBody, Stack, Text, StackDivider, Flex, Link } from '@chakra-ui/react'
+import { Box, Heading, Card, CardHeader, CardBody, Stack, Text, StackDivider, Flex, Link, Avatar } from '@chakra-ui/react'
 import React from 'react'
 import { BiChevronLeft } from 'react-icons/bi'
 import { Link as RouterLink, Outlet, useNavigate } from 'react-router-dom'
@@ -6,6 +6,8 @@ import Header from '../../Components/Layout/Header'
 import EditButton from '../../Components/EditProfile/EditButton'
 
 import { useDispatch, useSelector } from 'react-redux';
+import EditForm from '../../Components/EditProfile/EditForm'
+import AvatarProfile from './Avatar'
 
 export default function Profile() {
     const { user } = useSelector(state => state.auth)
@@ -28,7 +30,7 @@ export default function Profile() {
                     </Box>
                     <Flex align={'center'} justify={'space-between'}>
                         <Heading size={['sm', 'md', 'md', 'lg']}>Personal details</Heading>
-                        <EditButton />
+                        <EditButton children={<EditForm/>} />
                     </Flex>
                 </CardHeader>
 
@@ -74,12 +76,28 @@ export default function Profile() {
                         </Box>
                     </Stack>
                 </CardBody>
-            <Outlet/>
+                {/* <CardHeader w={['100%', '80%', '80%', '60%']} margin={'auto'}>
+                    <Flex align={'center'} justify={'space-between'}>
+                        <Heading size={['sm', 'md', 'md', 'lg']}>Avatar</Heading>
+                        <EditButton action={user.avatar === null ? 'add' : 'edit'} />
+                    </Flex>
+                    <Avatar mt={'3rem'} size='xl'/>
+                </CardHeader> */}
+
+                    <AvatarProfile/>
+                
+                {/* <Outlet /> */}
+
+                <CardHeader w={['100%', '80%', '80%', '60%']} margin={'auto'}>
+                    <Flex align={'center'} justify={'space-between'}>
+                        <Heading size={['sm', 'md', 'md', 'lg']}>Password</Heading>
+                        <EditButton action={'edit'}/>
+                    </Flex>
+                </CardHeader>
             </Card>
-            {user.avatar ? (
-                ''
-            ) : null
-            }
+            {!user.avatar && ''}
+
+
             {/* Si user.avatar mostrar componente de editar avatar (el popover esta pero como un texto de "editar avatar", cuando hace click se renderiza el Outlet) */}
             {/* una vez que se edita, manejar el navigate para que vuelva a /profile        */}
         </>

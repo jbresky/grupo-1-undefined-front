@@ -26,7 +26,7 @@ const Header = () => {
     return (
         <Flex
             alignItems={'center'}
-            background={'gray.800'}
+            background={'gray.700'}
             justify={['space-between', 'space-between', 'space-around']}
             p={6}
         >
@@ -44,8 +44,10 @@ const Header = () => {
                     <Link fontSize={'17px'} as={RouterLink} to='/transaction-create'>Enviar dinero</Link>
                     <Link fontSize={'17px'} as={RouterLink} to='/profile'>Perfil</Link>
                     <Link fontSize={'17px'} onClick={handleLogout}>Logout</Link>
+                    {user.avatar !== null ? <Avatar /> : (
+                        <AvatarPopover display={['none', 'none', 'none', 'block']} />
+                    )}
                     {/* if user.avatar mostrar el avatar con componente avatar, sino, mostrar este popover */}
-                    <AvatarPopover display={['none', 'none', 'none', 'block']} />
                 </HStack>
             </HStack>
         </Flex >

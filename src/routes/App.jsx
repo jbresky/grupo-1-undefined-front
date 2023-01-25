@@ -12,6 +12,7 @@ import Signin from '../pages/Signin';
 import UserDetail from '../pages/admin/UserDetail';
 import Avatar from '../pages/user/Avatar';
 import { isLogged, isLoggedAdmin } from '../utils/isLogged';
+import AvatarProfile from '../pages/user/Avatar';
 const client = new QueryClient();
 
 const App = () => {
@@ -30,7 +31,7 @@ const App = () => {
                         </Route>
                         <Route exact path='/transactions' element={<Transactions />} />
                         <Route exact path='/profile' element={<Profile />}>
-                            <Route path=':avatar' element={<Avatar />}></Route>
+                            {/* <Route path=':avatar' element={<AvatarProfile />}></Route> */}
                         </Route>
                         <Route path='/admin' element={loggedAdmin ? <Admin /> : <Navigate to='/' />} >
                             <Route path=':user:id' element={<UserDetail />} />

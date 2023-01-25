@@ -20,7 +20,7 @@ export default function AvatarPopover({display}) {
 
   const navigate = useNavigate();
   const handleNavigate = () => {
-    navigate('/profile/avatar')
+    navigate('/profile')
   }
 
     const initialFocusRef = useRef()

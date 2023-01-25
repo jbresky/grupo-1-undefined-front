@@ -5,18 +5,14 @@ import Balance from '../../Components/UI/Balance';
 import { Box, Stack, Flex } from '@chakra-ui/react';
 import Movimientos from '../../Components/UI/Movimientos';
 import { useSelector } from 'react-redux';
-// import useGetBalance from '../../hooks/useBalance';
-import { Outlet, useParams } from 'react-router';
-import { isLogged, isLoggedAdmin } from '../../utils/isLogged';
-import PublicHeader from '../../Components/Layout/PublicHeader';
+import { Outlet } from 'react-router';
+import { isLoggedAdmin } from '../../utils/isLogged';
 import AdminHeader from '../../Components/Layout/AdminHeader';
-// import { useGetUserDetails } from '../../hooks/useUsers';
 
 function Home() {
 
     const { user } = useSelector(state => state.auth)
-    // const loggedUser = isLogged();
-    const isAdmin = isLoggedAdmin();
+    const isAdmin = isLoggedAdmin(); 
 
     return (
         <>

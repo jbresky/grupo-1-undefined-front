@@ -4,18 +4,6 @@ import auth from "../../services/auth";
 
 const initialState = () => {
   const data = localStorage.read('alkybank')
-  // const data = localStorage.write('alkybank', {
-  //   "id": 2,
-  //   "firstName": "Deon",
-  //   "lastName": "Okuneva",
-  //   "email": "Deon_Okuneva7@hotmail.com",
-  //   "password": "$2a$08$0uBuXaPV03x5Sfnjxzbh8OxEQ1ZbMf1q7HvZdg8ogfwJ3LyCMLxdK",
-  //   "avatar": null,
-  //   "roleId": 1,
-  //   "createdAt": "2022-12-22T02:19:23.000Z",
-  //   "updatedAt": "2022-12-22T03:57:30.000Z",
-  // }
-  //   )
 
   if (!data) {
     return {

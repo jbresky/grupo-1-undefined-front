@@ -1,14 +1,14 @@
-import {useQuery} from '@tanstack/react-query'
+// import {useQuery} from '@tanstack/react-query'
 
-import {getRequest} from '../services/http-request'
+// import {getRequest} from '../services/http-request'
 
-const fetchBalance = () => getRequest('/transactions/')
+// const fetchBalance = () => getRequest('/transactions/')
 
-const useGetBalance = (onSuccess, onError) =>
-  useQuery(['balance'], fetchBalance, {
-    onSuccess,
-    onError,
-    select: (data) => data.body,
-  })
+// const useGetBalance = (onSuccess, onError) =>
+//   useQuery(['balance'], fetchBalance, {
+//     onSuccess,
+//     onError,
+//     select: (data) => data.body,
+//   })
 
-export default useGetBalance
+// export default useGetBalance

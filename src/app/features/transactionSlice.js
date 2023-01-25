@@ -14,12 +14,18 @@ export const transactionSlice = createSlice({
     reducers: {
         setTransactions: (state, action) => {
             state.transactions = action.payload.transactions;
-            // state.transactionsFilter = action.payload.transactionsFilter;
+            state.transactionsFilter = action.payload.transactionsFilter;
             state.balance = action.payload.balance
+        },
+        setFilter: (state, action) => {
+            state.filter = action.payload
+        },
+        setCategories: (state, action) => {
+            state.categories = action.payload
         }
     }
 });
 
-export const { setTransactions } = transactionSlice.actions;
+export const { setTransactions, setFilter, setCategories } = transactionSlice.actions;
 
 export default transactionSlice.reducer;

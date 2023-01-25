@@ -1,4 +1,4 @@
-import { Flex, Heading, Input, Button, Select, Text, FormControl, FormErrorMessage, Box, CloseButton } from "@chakra-ui/react";
+import { Flex, Heading, Input, Button, Select, FormControl, FormErrorMessage, Box, CloseButton, FormLabel } from "@chakra-ui/react";
 import { useNavigate } from "react-router";
 
 export const TransactionsForm = ({
@@ -40,6 +40,7 @@ export const TransactionsForm = ({
               <CloseButton onClick={handleNavigate} />
             </Flex>
             <FormControl pb={2} isInvalid={!!errors.description && touched.description}>
+              <FormLabel>Descripcion</FormLabel>
               <Input
                 backgroundColor={'white'}
                 type="text"
@@ -47,12 +48,12 @@ export const TransactionsForm = ({
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.description}
-                placeholder="Enter description"
                 id="description"
               />
               <FormErrorMessage>{errors.description}</FormErrorMessage>
             </FormControl>
             <FormControl pb={2} isInvalid={!!errors.amount && touched.amount}>
+            <FormLabel>Monto</FormLabel>
               <Input
                 backgroundColor={'white'}
                 type="number"
@@ -60,13 +61,13 @@ export const TransactionsForm = ({
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.amount}
-              placeholder="Enter amount"
               />
               <FormErrorMessage>{errors.amount}</FormErrorMessage>
             </FormControl>
             <FormControl pb={2} isInvalid={!!errors.categoryId && touched.categoryId}>
+            <FormLabel>Categoria</FormLabel>
               <Select backgroundColor={'white'} pb={2} name="categoryId" onChange={handleChange}>
-                <option selected disabled>Select a category</option>
+                <option selected disabled>--</option>
                 {categories?.map((category) => {
                   return <option key={category.id} value={category.id}>{category.name}</option>;
                 })}
@@ -74,37 +75,19 @@ export const TransactionsForm = ({
               <FormErrorMessage>{errors.categoryId}</FormErrorMessage>
             </FormControl>
 
-            <FormControl pb={2} isInvalid={!!errors.destinationId && touched.destiationId} >
+            <FormControl pb={2} isInvalid={!!errors.toUserId && touched.toUserId} >
+            <FormLabel>Destinatario</FormLabel>
               <Select backgroundColor={'white'}
                 pb={2} name="toUserId" onChange={handleChange}>
-                  <option selected disabled>Select a user</option>
-                {users?.map((user) => {
-                  return <option key={user.id} value={user.id}>{`${user.firstName} ${user.lastName}`}</option>;
+                  <option selected disabled>--</option>
+                {users?.map((toUser) => {
+                  return <option key={toUser.id} value={toUser.id}>{`${toUser.firstName} ${toUser.lastName}`}</option>;
                 })}
               </Select>
               <FormErrorMessage>{errors.toUserId}</FormErrorMessage>
             </FormControl>
-            {/* <Input
-            display={'none'}
-            name="userId"
-            value={values.userId}
-            ></Input> */}
 
-            {/* <FormControl pb={2} isInvalid={!!errors.date && touched.date}>
-              <Input
-               backgroundColor={'white'}
-                type="date"
-                name="date"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.date}
-                placeholder="Enter date"
-                className="form-control"
-              />
-              <FormErrorMessage>{errors.date}</FormErrorMessage>
-            </FormControl> */}
-
-            <Button disabled={isLoading} mt={2} backgroundColor={'gray.700'} color={'white'} mb={8} type="submit">
+            <Button disabled={isLoading} mt={2} backgroundColor={'gray.600'} _hover={{'backgroundColor': '#718096' }} color={'white'} mb={8} type="submit">
               Create
             </Button>
           </Flex>
