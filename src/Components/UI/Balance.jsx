@@ -14,7 +14,7 @@ const Balance = () => {
   const { balance } = useSelector(state => state.transactions)
 
   useEffect(() => {
-    const interval = setInterval(() => dispatch(getTransactions(user.id)), 7000);
+    const interval = setInterval(() => dispatch(getTransactions(user.id)), 10000);
     dispatch(getTransactions(user.id));
 
     return () => clearInterval(interval)

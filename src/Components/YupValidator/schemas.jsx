@@ -16,7 +16,7 @@ export const editSchema = Yup.object().shape({
     .min(6, 'Password must be at least 6 characters')
     .matches(
       /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[#?!@$%^&*-]).{8,50}/,
-      'La contraseñade tener un mínimo 8 caracteres, e incluir al menos una letra en mayúscula y un caracter especial'
+      'La contraseña debe tener un mínimo 8 caracteres, e incluir al menos una letra en mayúscula y un caracter especial'
     ),
 })
 
@@ -29,7 +29,7 @@ export const registerSchema = Yup.object({
     .required('Required')
     .matches(
       /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[#?!@$%^&*-]).{8,50}/,
-      'La contraseñade tener un mínimo 8 caracteres, e incluir al menos una letra en mayúscula y un caracter especial'
+      'La contraseña debe tener un mínimo 8 caracteres, e incluir al menos una letra en mayúscula y un caracter especial'
     ),
 })
 
@@ -46,3 +46,29 @@ export const transactionSchema = Yup.object().shape({
   categoryId: Yup.number().required("Select one category"),
   toUserId: Yup.number().required("Select a user")
 });
+
+export const editPwdSchema = Yup.object({
+  currentPassword: Yup.lazy(value => {
+    if(!value){
+      return Yup.string().required("Please enter your current password");
+    }
+    return Yup.mixed().optional();
+  }),
+  newPassword: Yup.lazy(value => {
+    if(!value){
+      return Yup.string().required("Please enter your new password")
+      
+      ;
+    }
+    return Yup.string().matches(
+      /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[#?!@$%^&*-]).{8,50}/,
+      'La contraseña debe tener un mínimo 8 caracteres, e incluir al menos una letra en mayúscula y un caracter especial'
+    )
+  }),
+  repeatPassword: Yup.lazy(value => {
+    if(!value) {
+      return Yup.string().required("Confirmation required");
+    }
+    return Yup.string().oneOf([Yup.ref('newPassword')], 'Passwords do not match');
+  })
+})
