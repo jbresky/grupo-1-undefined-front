@@ -61,8 +61,8 @@ export default function HeaderDrawer() {
                         <Stack spacing={5}>
                             {logged ? (
                                 <>
-                                <Link as={RouterLink} to='/profile'>Mi perfil</Link>
-                                <Link as={RouterLink} to='/transactions'>Movimientos</Link>
+                                <Link onClick={onClose} as={RouterLink} to='/profile'>Mi perfil</Link>
+                                <Link onClick={onClose} as={RouterLink} to='/transactions'>Movimientos</Link>
                                 <Button onClick={handleLogout} color={'black'} textAlign={'left'}>Cerrar sesión</Button>
                                 </>
                             ) : (
